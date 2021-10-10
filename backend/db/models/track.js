@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     trackImageURL: DataTypes.STRING
   }, {});
   Track.associate = function(models) {
-    Track.belongsTo(models.User, { foreignKey: 'userId' });
-    Track.belongsTo(models.Media, { foreignKey: 'mediumId' });
-    Track.belongsTo(models.Album, { foreignKey: 'albumId' });
-    Track.belongsTo(models.Artist, { foreignKey: 'artistId' });
-    Track.hasMany(models.Comment, { foreignKey: 'trackId '});
+    Track.belongsTo(models.User, { as: "user", foreignKey: 'userId' });
+    Track.belongsTo(models.Media, { as: "medium", foreignKey: 'mediumId' });
+    Track.belongsTo(models.Album, { as: "album", foreignKey: 'albumId' });
+    Track.belongsTo(models.Artist, { as: "artist", foreignKey: 'artistId' });
+    Track.hasMany(models.Comment, { as: "comments", foreignKey: 'trackId '});
   };
   return Track;
 };

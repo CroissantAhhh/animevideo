@@ -4,12 +4,17 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import { retainSession } from "./store/session";
 import Navigation from "./components/Navigation";
+import { loadTracks } from "./store/tracks";
+import { loadMedia } from "./store/media";
+import TrackList from "./components/TrackList";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(retainSession()).then(() => setIsLoaded(true));
+    dispatch(loadTracks());
+    dispatch(loadMedia());
   }, [dispatch]);
 
   return (
@@ -17,6 +22,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <TrackList></TrackList>
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     mediumId: DataTypes.INTEGER
   }, {});
   Album.associate = function(models) {
-    Album.belongsTo(models.Media, { foreignKey: 'mediumId' });
-    Album.belongsTo(models.Artist, { foreignKey: 'artistId' });
-    Album.hasMany(models.Track, { foreignKey: 'albumId' });
+    Album.belongsTo(models.Media, { as: "medium", foreignKey: 'mediumId' });
+    Album.belongsTo(models.Artist, { as: "artist", foreignKey: 'artistId' });
+    Album.hasMany(models.Track, { as: "tracks", foreignKey: 'albumId' });
   };
   return Album;
 };

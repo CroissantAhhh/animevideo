@@ -7,6 +7,8 @@ import Navigation from "./components/Navigation";
 import { loadTracks } from "./store/tracks";
 import { loadMedia } from "./store/media";
 import TrackList from "./components/TrackList";
+import CurrentSongProvider from "./context/currentSongContext";
+import SongPlayerBar from "./components/SongPlayerBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,16 +22,19 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <TrackList></TrackList>
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
+      <CurrentSongProvider>
+        {isLoaded && (
+          <Switch>
+            <Route exact path="/">
+              <TrackList></TrackList>
+              <SongPlayerBar></SongPlayerBar>
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+          </Switch>
+        )}
+      </CurrentSongProvider>
     </>
   );
 }

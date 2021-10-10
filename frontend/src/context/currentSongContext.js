@@ -5,13 +5,12 @@ export const CurrentSongContext = createContext();
 export const useCurrentSong = () => useContext(CurrentSongContext);
 
 export default function CurrentSongProvider({ children }) {
+    const [currentSong, setCurrentSong] = useState("");
 
     return (
-        <AppContext.Provider
-            value={{
-
-            }}>
+        <CurrentSongContext.Provider
+            value={{currentSong, setCurrentSong}}>
                 {children}
-        </AppContext.Provider>
-    )
+        </CurrentSongContext.Provider>
+    );
 }

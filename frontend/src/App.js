@@ -24,9 +24,6 @@ function App() {
             <Route exact path="/">
               <TrackList></TrackList>
             </Route>
-            <Route path="/media">
-
-            </Route>
             <Route path="/search">
               <SearchResults></SearchResults>
             </Route>

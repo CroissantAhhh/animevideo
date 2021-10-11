@@ -16,8 +16,6 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(retainSession()).then(() => setIsLoaded(true));
-    dispatch(loadTracks());
-    dispatch(loadMedia());
   }, [dispatch]);
 
   return (

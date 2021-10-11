@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useCurrentSong } from "../../context/currentSongContext";
 import "./SongPlayerBar.css";
 

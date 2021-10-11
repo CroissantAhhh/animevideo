@@ -1,4 +1,6 @@
 import MediaResults from "./MediaResults";
+import AlbumResults from "./AlbumResults";
+import TrackResults from "./TrackResults";
 
 function SearchResults() {
 
@@ -8,6 +10,8 @@ function SearchResults() {
         <div className="search-results">
             <p>Search Results For: {searchString}</p>
             <MediaResults query={searchString}></MediaResults>
+            <AlbumResults query={searchString}></AlbumResults>
+            <TrackResults query={searchString}></TrackResults>
         </div>
     )
 }

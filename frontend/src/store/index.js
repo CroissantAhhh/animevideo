@@ -3,9 +3,11 @@ import thunk from 'redux-thunk';
 import session from "./session";
 import media from "./media";
 import tracks from "./tracks";
+import albums from "./albums";
 
 const rootReducer = combineReducers({
     media,
+    albums,
     tracks,
     session,
 });

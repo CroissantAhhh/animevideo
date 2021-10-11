@@ -21,7 +21,7 @@ router.get(
 router.get(
     "/:query",
     asyncHandler(async (req, res) => {
-        const tracks = await TracksRepository.search(req.body);
+        const tracks = await TracksRepository.search(req.params.query);
         return res.json({
             tracks
         });

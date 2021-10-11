@@ -46,12 +46,11 @@ async function getRandom(length) {
 };
 
 async function search(query) {
-    const randomTracks = await rollTracks(length);
     return await Track.findAll({
         include: ["album", "medium"],
         where: {
             name: {
-                [Op.like]: `%${query}%`
+                [Op.iLike]: `%${query}%`
             }
         }
     });

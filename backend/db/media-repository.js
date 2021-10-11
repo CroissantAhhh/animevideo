@@ -10,7 +10,7 @@ async function search(query) {
     return await Media.findAll({
         where: {
             name: {
-                [Op.like]: `%${query}%`
+                [Op.iLike]: `%${query}%`
             }
         }
     });

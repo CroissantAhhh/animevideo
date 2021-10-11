@@ -6,9 +6,10 @@ async function search(query) {
     return await Album.findAll({
         where: {
             name: {
-                [Op.like]: `%${query}%`
+                [Op.iLike]: `%${query}%`
             }
-        }
+        },
+        include: ["medium"]
     });
 };
 

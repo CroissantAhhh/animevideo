@@ -8,7 +8,7 @@ function MediaResults({ query }) {
 
     useEffect(() => {
         dispatch(searchMedia(query));
-    },[dispatch]);
+    },[dispatch, query]);
     const media = useSelector(state => Object.values(state.media));
     const mediaArray = Object.values(media);
 
@@ -16,7 +16,7 @@ function MediaResults({ query }) {
         <div className="media-results">
             <h2>Media</h2>
             {mediaArray.map(medium => {
-                <MediaResult medium={medium}></MediaResult>
+                return <MediaResult medium={medium} key={medium.id}></MediaResult>
             })}
         </div>
     )

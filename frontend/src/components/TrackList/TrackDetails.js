@@ -1,7 +1,7 @@
 import { useCurrentSong } from "../../context/currentSongContext";
 
 const TrackSection = ({ track }) => {
-    const { currentSong, setCurrentSong } = useCurrentSong();
+    const { setCurrentSong } = useCurrentSong();
     return (
         <div className="trackSection">
             <h1>{track.name}</h1>

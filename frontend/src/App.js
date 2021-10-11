@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
 import { retainSession } from "./store/session";
 import Navigation from "./components/Navigation";
-import { loadTracks } from "./store/tracks";
-import { loadMedia } from "./store/media";
 import TrackList from "./components/TrackList";
 import SearchResults from "./components/SearchResults";
 import CurrentSongProvider from "./context/currentSongContext";

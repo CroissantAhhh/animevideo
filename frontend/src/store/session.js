@@ -34,7 +34,6 @@ export const signup = (userInfo) => async dispatch => {
 
 export const loginSession = (user) => async dispatch => {
     const { credential, password } = user;
-    console.log(credential, password);
     const response = await csrfFetch(`/api/session`, {
         method: "POST",
         header: {
@@ -53,14 +52,14 @@ export const loginSession = (user) => async dispatch => {
     };
 };
 
-export const retainSession = (username, password) => async dispatch => {
+export const retainSession = () => async dispatch => {
     const response = await fetch(`/api/session`);
 
     if (response.ok) {
         const userInfo = await response.json();
         dispatch(login(userInfo));
-    }
-}
+    };
+};
 
 export const logoutSession = () => async dispatch => {
     const response = await csrfFetch('/api/session', {
@@ -69,18 +68,22 @@ export const logoutSession = () => async dispatch => {
 
     if (response.ok) {
         dispatch(logout());
-    }
-}
+    };
+};
+
 const sessionReducer = (state = { user: null }, action) => {
-    switch(action.type) {
-        case LOGIN:
-            let newState = action.userInfo ;
-            return newState;
-        case LOGOUT:
+    switch (action.type) {
+      case LOGIN:
+        if (action.userInfo.user) {
+            return action.userInfo;
+        } else {
             return { user: null };
-        default:
-            return state;
+        };
+      case LOGOUT:
+        return { user: null };
+      default:
+        return state;
     }
-}
+  };
 
 export default sessionReducer;

@@ -18,4 +18,14 @@ router.get(
     }),
 );
 
+router.get(
+    "/:query",
+    asyncHandler(async (req, res) => {
+        const media = await MediaRepository.search(req.params.query);
+        return res.json({
+            media
+        });
+    }),
+);
+
 module.exports = router;

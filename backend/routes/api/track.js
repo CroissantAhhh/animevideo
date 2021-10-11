@@ -11,17 +11,40 @@ const router = express.Router();
 router.get(
     "/",
     asyncHandler(async (req, res) => {
-        const tracks = await TracksRepository.getRandomTracks(20);
+        const tracks = await TracksRepository.getRandom(20);
         return res.json({
             tracks
         });
     }),
 );
 
+router.get(
+    "/:query",
+    asyncHandler(async (req, res) => {
+        const tracks = await TracksRepository.search(req.body);
+        return res.json({
+            tracks
+        });
+    }),
+)
+
 router.post(
     "/",
     asyncHandler(async (req, res) => {
+        const track = await TracksRepository.create(req.body)
+        return res.json({
+            track
+        })
+    })
+)
 
+router.put(
+    "/",
+    asyncHandler(async (req, res) => {
+        const track = await TracksRepository.update(req.body)
+        return res.json({
+            track
+        })
     })
 )
 

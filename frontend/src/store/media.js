@@ -14,11 +14,18 @@ export const loadMedia = () => async dispatch => {
     };
 };
 
+export const searchMedia = (query) => async dispatch => {
+    const response = await fetch(`/api/media/${query}`);
+    if (response.ok) {
+        const media = await response.json();
+        dispatch(load(media["media"]));
+    };
+}
+
 const mediaReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD:
             const media = {};
-            console.log(action.list);
             for (let medium of action.list) {
                 media[medium.id] = medium;
             };

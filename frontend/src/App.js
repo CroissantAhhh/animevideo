@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import { loadTracks } from "./store/tracks";
 import { loadMedia } from "./store/media";
 import TrackList from "./components/TrackList";
+import SearchResults from "./components/SearchResults";
 import CurrentSongProvider from "./context/currentSongContext";
 import SongPlayerBar from "./components/SongPlayerBar";
 
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route path="/media">
 
+            </Route>
+            <Route path="/search">
+              <SearchResults></SearchResults>
             </Route>
             <Route path="/signup">
               <SignupFormPage />

@@ -13,14 +13,14 @@ async function search(query) {
 };
 
 async function create(details) {
-    const comment = await Comment.create(details);
-    return comment.id;
+    const album = await Album.create(details);
+    return album.id;
 }
 
 async function update(details) {
     const id = details.id;
     delete details.id;
-    await Comment.update(
+    await Album.update(
       details,
       {
         where: { id },
@@ -32,12 +32,12 @@ async function update(details) {
 }
 
 async function del(id) {
-    const comment = Comment.findByPk(id);
-    comment.destroy();
+    const album = Album.findByPk(id);
+    album.destroy();
 };
 
 module.exports = {
-    listByTrack,
+    search,
     create,
     update,
     del,

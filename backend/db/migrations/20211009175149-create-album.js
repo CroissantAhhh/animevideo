@@ -16,10 +16,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      artistId: {
+      artist: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Artists' }
+        type: Sequelize.STRING
       },
       mediumId: {
         allowNull: false,

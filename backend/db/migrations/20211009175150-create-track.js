@@ -21,11 +21,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Users' }
       },
-      artistId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Artists' }
-      },
       albumId: {
         allowNull: false,
         type: Sequelize.INTEGER,

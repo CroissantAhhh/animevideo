@@ -8,7 +8,7 @@ import { ModalProvider } from "./context/Modal";
 
 import configureStore from "./store";
 import { restoreCSRF, csrfFetch } from "./store/csrf";
-import { loginSession } from "./store/session";
+import { loginSession, logoutSession } from "./store/session";
 
 const store = configureStore();
 
@@ -18,6 +18,7 @@ if (process.env.NODE_ENV !== "production") {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.loginSession = loginSession;
+  window.logoutSession = logoutSession;
 }
 
 function Root() {

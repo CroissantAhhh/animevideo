@@ -9,7 +9,6 @@ async function rollTracks(length) {
     while (result.length < length) {
         let randomIndex = Math.floor(Math.random() * DATASIZE) + 1;
         let randomTrack = await Track.findByPk(randomIndex);
-        console.log(randomTrack)
         if (!result.includes(randomTrack.name)) {
             result.push(randomTrack.name);
         };
@@ -19,27 +18,27 @@ async function rollTracks(length) {
 
 async function list() {
     return await Track.findAll({
-        include: ["album", "artist", "medium"],
+        include: ["album", "medium"],
     });
 };
 
 async function shorterList(length) {
     return await Track.findAll({
-        include: ["album", "artist", "medium"],
+        include: ["album", "medium"],
         limit: length
     });
 };
 
 async function get(id) {
     return await Track.findByPk(id, {
-        include: ["album", "artist", "medium"]
+        include: ["album", "medium"]
     });
 };
 
 async function getRandom(length) {
     const randomTracks = await rollTracks(length);
     return await Track.findAll({
-        include: ["album", "artist", "medium"],
+        include: ["album", "medium"],
         where: {
             name: randomTracks
         }
@@ -49,7 +48,7 @@ async function getRandom(length) {
 async function search(query) {
     const randomTracks = await rollTracks(length);
     return await Track.findAll({
-        include: ["album", "artist", "medium"],
+        include: ["album", "medium"],
         where: {
             name: {
                 [Op.like]: `%${query}%`

@@ -6,7 +6,7 @@ const TrackSection = ({ track }) => {
         <div className="trackSection">
             <h1>{track.name}</h1>
             <h2>{track.medium.name}</h2>
-            <h2>{track.artist.name}</h2>
+            <h2>{track.album.artist}</h2>
             <h2>{track.album.name}</h2>
             <button className="play-track" value={track.fileURL} onClick={(e) => {
                 setCurrentSong({
@@ -14,7 +14,7 @@ const TrackSection = ({ track }) => {
                     imageURL: track.trackImageURL,
                     name: track.name,
                     media: track.medium.name,
-                    artist: track.artist.name,
+                    artist: track.album.artist,
                     album: track.album.name
                 })
             }}>Play</button>

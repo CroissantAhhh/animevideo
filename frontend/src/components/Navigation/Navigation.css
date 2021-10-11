@@ -1,0 +1,30 @@
+header {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background-color: black;
+}
+
+.nav-bar-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-bar-left {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+}
+
+.nav-bar-middle {
+    width: 60%;
+}
+
+.nav-bar-right {
+    width: 20%;
+}
+
+p {
+    color: white;
+}

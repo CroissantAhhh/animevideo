@@ -27,13 +27,17 @@ function App() {
           <Switch>
             <Route exact path="/">
               <TrackList></TrackList>
-              <SongPlayerBar></SongPlayerBar>
+            </Route>
+            <Route path="/media">
+
             </Route>
             <Route path="/signup">
               <SignupFormPage />
             </Route>
           </Switch>
+
         )}
+        <SongPlayerBar></SongPlayerBar>
       </CurrentSongProvider>
     </>
   );

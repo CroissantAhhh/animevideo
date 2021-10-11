@@ -1,0 +1,6 @@
+.song-player-bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: brown;
+}

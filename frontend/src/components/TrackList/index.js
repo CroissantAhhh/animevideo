@@ -8,7 +8,7 @@ function TrackList() {
         <>
             {tracks.map(track => {
                 return <TrackDetails track={track} key={track.id}></TrackDetails>
-            })};
+            })}
         </>
     )
 }

@@ -33,9 +33,6 @@ function App() {
             <Route path="/search">
               <SearchResults></SearchResults>
             </Route>
-            <Route path="/signup">
-              <SignupFormPage />
-            </Route>
           </Switch>
 
         )}

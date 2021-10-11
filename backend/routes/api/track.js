@@ -4,6 +4,7 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { process } = require('../../utils/process');
 const TracksRepository = require('../../db/tracks-repository');
 
 const router = express.Router();
@@ -21,7 +22,8 @@ router.get(
 router.get(
     "/:query",
     asyncHandler(async (req, res) => {
-        const tracks = await TracksRepository.search(req.params.query);
+        const query = process(req.params.query)
+        const tracks = await TracksRepository.search(query);
         return res.json({
             tracks
         });

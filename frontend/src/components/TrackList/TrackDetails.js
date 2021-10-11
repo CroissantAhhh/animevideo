@@ -5,6 +5,7 @@ const TrackSection = ({ track }) => {
     return (
         <div className="trackSection">
             <h1>{track.name}</h1>
+            <img src={track.trackImageURL} alt="track artwork" height="100px" width="100px"/>
             <h2>{track.medium.name}</h2>
             <h2>{track.album.artist}</h2>
             <h2>{track.album.name}</h2>

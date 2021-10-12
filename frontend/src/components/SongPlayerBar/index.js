@@ -8,7 +8,7 @@ function SongPlayerBar() {
     return (
         <div className="song-player-bar">
             <audio controls src={currentSong.fileURL} type="audio/mpeg" autoPlay={true} preload="auto"/>
-            <img src={currentSong.imageURL} alt="track artwork" height="200px" width="200px"></img>
+            <img src={currentSong.trackImageURL} alt="track artwork" height="200px" width="200px"></img>
             <h2>{currentSong.name}</h2>
             <h2>{currentSong.media}</h2>
             <h2>{currentSong.album}</h2>

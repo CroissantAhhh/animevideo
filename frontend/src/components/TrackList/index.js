@@ -5,9 +5,7 @@ import TrackDetails from "./TrackDetails";
 
 function TrackList() {
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(loadTracks())
-    },[dispatch])
+
     const tracks = useSelector(state => Object.values(state.tracks));
 
     return (

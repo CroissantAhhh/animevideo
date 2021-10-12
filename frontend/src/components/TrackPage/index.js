@@ -1,36 +1,47 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useRouteMatch } from "react-router";
+import { useParams } from "react-router";
 import { useCurrentSong } from "../../context/currentSongContext";
 import { loadComments } from "../../store/comments";
+import { loadTracks } from "../../store/tracks";
 import CommentsSection from "./CommentsSection";
+import { process } from "../../utils/process";
 
-function TrackPage({ track }) {
+function TrackPage() {
     const { setCurrentSong } = useCurrentSong();
     const dispatch = useDispatch();
+    const { mediumName, trackName } = useParams();
+
     useEffect(() => {
-        dispatch(loadComments(track.id));
-    },[dispatch, track]);
+        dispatch(loadTracks());
+    }, [dispatch])
+
+    const targetTrack = useSelector(state => Object.values(state.tracks)).find((track) => {
+        return ((process(track.name) === trackName) && (process(track.medium.name) === mediumName));
+    });
+    console.log(targetTrack)
+
+    useEffect(() => {
+        dispatch(loadComments(targetTrack.id));
+    }, [dispatch]);
     const comments = useSelector(state => Object.values(state.comments));
 
-    const { path, url } = useRouteMatch();
-    console.log(path, url);
     return (
         <div className="track-page">
             <div className="track-page-section">
-                <h1>{track.name}</h1>
-                <img src={track.trackImageURL} alt="track artwork" height="100px" width="100px"/>
-                <h2>{track.medium.name}</h2>
-                <h2>{track.album.artist}</h2>
-                <h2>{track.album.name}</h2>
-                <button className="play-track" value={track.fileURL} onClick={(e) => {
+                <h1>{targetTrack.name}</h1>
+                <img src={targetTrack.trackImageURL} alt="track artwork" height="100px" width="100px"/>
+                <h2>{targetTrack.medium.name}</h2>
+                <h2>{targetTrack.album.artist}</h2>
+                <h2>{targetTrack.album.name}</h2>
+                <button className="play-track" value={targetTrack.fileURL} onClick={(e) => {
                     setCurrentSong({
                         fileURL: e.target.value,
-                        imageURL: track.trackImageURL,
-                        name: track.name,
-                        media: track.medium.name,
-                        artist: track.album.artist,
-                        album: track.album.name
+                        trackImageURL: targetTrack.trackImageURL,
+                        name: targetTrack.name,
+                        media: targetTrack.medium.name,
+                        artist: targetTrack.album.artist,
+                        album: targetTrack.album.name
                     })
                 }}>Play</button>
             </div>

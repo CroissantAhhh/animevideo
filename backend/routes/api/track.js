@@ -12,7 +12,7 @@ const router = express.Router();
 router.get(
     "/",
     asyncHandler(async (req, res) => {
-        const tracks = await TracksRepository.getRandom(20);
+        const tracks = await TracksRepository.list();
         return res.json({
             tracks
         });

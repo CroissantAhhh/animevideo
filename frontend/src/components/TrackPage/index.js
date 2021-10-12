@@ -3,9 +3,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useCurrentSong } from "../../context/currentSongContext";
 import { loadComments } from "../../store/comments";
-import { loadTracks } from "../../store/tracks";
+import { loadTargetTrack } from "../../store/tracks";
 import CommentsSection from "./CommentsSection";
-import { process } from "../../utils/process";
 import "./TrackPage.css";
 
 function TrackPage() {
@@ -14,12 +13,11 @@ function TrackPage() {
     const { mediumName, trackName } = useParams();
     console.log(mediumName, trackName)
     useEffect(() => {
-        dispatch(loadTracks());
-    }, [dispatch])
+        console.log("useEffect triggered");
+        dispatch(loadTargetTrack(mediumName, trackName));
+    }, [dispatch, mediumName, trackName])
 
-    const targetTrack = useSelector(state => Object.values(state.tracks)).find((track) => {
-        return ((process(track.name) === trackName) && (process(track.medium.name) === mediumName));
-    });
+    const targetTrack = useSelector(state => Object.values(state.tracks));
 
     console.log(targetTrack?.id);
     useEffect(() => {

@@ -7,7 +7,7 @@ const TrackDetails = ({ track }) => {
 
     return (
         <div className="track-section">
-            <Link to={`/${process(track.medium.name)}/${process(track.name)}`}>{track.name}</Link>
+            <Link to={`/${process(track.medium.name)}/tracks/${process(track.name)}`}>{track.name}</Link>
             <img src={track.trackImageURL} alt="track artwork" height="100px" width="100px"/>
             <h2>{track.medium.name}</h2>
             <h2>{track.album.artist}</h2>

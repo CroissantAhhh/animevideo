@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { process } = require('../../utils/process');
+const { process } = require('../../utils/helpers');
 const TracksRepository = require('../../db/tracks-repository');
 
 const router = express.Router();
@@ -30,6 +30,18 @@ router.get(
 );
 
 router.get(
+    "/search/:mediumName/:trackName",
+    asyncHandler(async (req, res) => {
+        const mediumName = req.params.mediumName;
+        const trackName = req.params.trackName;
+        const track = await TracksRepository.getTargetTrack(mediumName, trackName);
+        return res.json({
+            track
+        });
+    }),
+)
+
+router.get(
     "/:query",
     asyncHandler(async (req, res) => {
         const query = process(req.params.query)
@@ -39,6 +51,7 @@ router.get(
         });
     }),
 )
+
 
 router.post(
     "/",

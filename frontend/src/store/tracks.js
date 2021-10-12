@@ -14,6 +14,15 @@ export const loadTracks = () => async dispatch => {
     };
 };
 
+export const loadTargetTrack = (mediumName, trackName) => async dispatch => {
+    const response = await fetch(`/api/tracks/search/${mediumName}/${trackName}`);
+
+    if (response.ok) {
+        const tracks = await response.json();
+        dispatch(load(tracks["tracks"]));
+    };
+};
+
 export const loadRandomTracks = () => async dispatch => {
     const response = await fetch('/api/tracks/random');
 

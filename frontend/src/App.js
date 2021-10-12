@@ -28,11 +28,11 @@ function App() {
             <Route path="/search">
               <SearchResults></SearchResults>
             </Route>
-            <Route path="/:mediumName">
-                <TrackPage></TrackPage>
+            <Route exact path="/:mediumName">
+                <p>Media Page Placeholder</p>
             </Route>
             <Route path="/:mediumName/albums/:albumName">
-                <TrackPage></TrackPage>
+                <p>Album Page Placeholder</p>
             </Route>
             <Route path="/:mediumName/tracks/:trackName">
                 <TrackPage></TrackPage>

@@ -1,5 +1,6 @@
 const { Track } = require("./models");
 const { Op } = require("sequelize");
+const { URLify } = require("../utils/helpers");
 
 
 async function rollTracks(length) {
@@ -45,6 +46,20 @@ async function getRandom(length) {
     });
 };
 
+async function getTargetTrack(mediumName, trackName) {
+    const searched = await Track.findAll({
+        include: ["album", "medium"],
+        where: {
+            name: {
+                [Op.iLike]: `%${trackName.split("-").join(" ")}%`
+            }
+        }
+    });
+    console.log(searched);
+    return searched.find(track => {
+        return URLify(track.medium.name) === mediumName;
+    });
+}
 async function search(query) {
     return await Track.findAll({
         include: ["album", "medium"],
@@ -84,6 +99,7 @@ module.exports = {
     list,
     shorterList,
     get,
+    getTargetTrack,
     getRandom,
     create,
     search,

@@ -5,7 +5,7 @@ const { Comment } = require("./models");
 async function listByTrack(trackId) {
     return await Comment.findAll({
         where: {
-            trackId
+            trackId: trackId
         }
     });
 };

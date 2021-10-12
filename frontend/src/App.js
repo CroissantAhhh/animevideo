@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { retainSession } from "./store/session";
-import { loadTracks } from "./store/tracks";
 import Navigation from "./components/Navigation";
 import TrackList from "./components/TrackList";
 import SearchResults from "./components/SearchResults";
@@ -14,7 +13,6 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(loadTracks());
     dispatch(retainSession()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -30,7 +28,13 @@ function App() {
             <Route path="/search">
               <SearchResults></SearchResults>
             </Route>
-            <Route path="/:mediumName/:trackName">
+            <Route path="/:mediumName">
+                <TrackPage></TrackPage>
+            </Route>
+            <Route path="/:mediumName/albums/:albumName">
+                <TrackPage></TrackPage>
+            </Route>
+            <Route path="/:mediumName/tracks/:trackName">
                 <TrackPage></TrackPage>
             </Route>
           </Switch>

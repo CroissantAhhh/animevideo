@@ -20,6 +20,16 @@ router.get(
 );
 
 router.get(
+    "/random",
+    asyncHandler(async (req, res) => {
+        const tracks = await TracksRepository.getRandom(20);
+        return res.json({
+            tracks
+        });
+    }),
+);
+
+router.get(
     "/:query",
     asyncHandler(async (req, res) => {
         const query = process(req.params.query)

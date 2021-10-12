@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     Track.belongsTo(models.User, { as: "user", foreignKey: 'userId' });
     Track.belongsTo(models.Media, { as: "medium", foreignKey: 'mediumId' });
     Track.belongsTo(models.Album, { as: "album", foreignKey: 'albumId' });
-    Track.hasMany(models.Comment, { as: "comments", foreignKey: 'trackId '});
+    Track.hasMany(models.Comment, { as: "comments", foreignKey: 'trackId' });
   };
   return Track;
 };

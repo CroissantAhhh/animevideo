@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useCurrentSong } from "../../../context/currentSongContext";
+import { process } from "../../../utils/process";
 
 function TrackResult({ track }) {
     const { setCurrentSong } = useCurrentSong();
     return (
         <div className="track-result">
-            <Link to={`/`}>{track.name}</Link>
+            <Link to={`/${process(track.medium.name)}/${process(track.name)}`}>{track.name}</Link>
             <img src={track.trackImageURL} alt="track artwork" height="100px" width="100px"></img>
             <button value={track.fileURL} onClick={(e) => {
                 setCurrentSong({
                     fileURL: e.target.value,
-                    imageURL: track.trackImageURL,
+                    trackImageURL: track.trackImageURL,
                     name: track.name,
                     media: track.medium.name,
                     artist: track.album.artist,

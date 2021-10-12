@@ -14,6 +14,15 @@ export const loadTracks = () => async dispatch => {
     };
 };
 
+export const loadRandomTracks = () => async dispatch => {
+    const response = await fetch('/api/tracks/random');
+
+    if (response.ok) {
+        const tracks = await response.json();
+        dispatch(load(tracks["tracks"]));
+    };
+};
+
 export const searchTracks = (query) => async dispatch => {
     const response = await fetch(`/api/tracks/${query}`);
     if (response.ok) {

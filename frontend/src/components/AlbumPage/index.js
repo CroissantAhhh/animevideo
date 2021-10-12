@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import { loadTargetAlbum } from "../../store/albums";
 import { loadTracksByAlbum } from "../../store/tracks"
 import TracksSection from "./TracksSection";
@@ -8,14 +8,12 @@ import TracksSection from "./TracksSection";
 function AlbumPage() {
     const dispatch = useDispatch();
     const { mediumName, albumName } = useParams();
-    console.log(mediumName, albumName)
 
     useEffect(() => {
         dispatch(loadTargetAlbum(mediumName, albumName));
     }, [dispatch, mediumName, albumName]);
 
     const targetAlbum = useSelector(state => Object.values(state.albums))[0];
-    console.log(targetAlbum);
 
     useEffect(() => {
         dispatch(loadTracksByAlbum(targetAlbum?.id));
@@ -27,6 +25,7 @@ function AlbumPage() {
         <div className="album-page">
             <h1>{targetAlbum?.name}</h1>
             <img src={targetAlbum?.albumImageURL} height="200px" width="200px" alt="album artwork" />
+            <Link to={`/${mediumName}`}></Link>
             <h2>{targetAlbum?.artist}</h2>
             <TracksSection tracks={tracks}></TracksSection>
         </div>

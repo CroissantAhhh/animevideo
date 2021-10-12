@@ -15,8 +15,8 @@ async function getTargetAlbum(mediumName, albumName) {
         include: ["medium"],
     });
     return [searched.find(album => {
-        return ((URLify(album.medium.name) === mediumName) &&
-                (URLify(album.name) === albumName));
+        return ((URLify(album.medium.dataValues.name) === mediumName) &&
+                (URLify(album.dataValues.name) === albumName));
     })];
 };
 

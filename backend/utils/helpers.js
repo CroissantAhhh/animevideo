@@ -8,7 +8,7 @@ function URLify(name) {
     for (let nameChar of name) {
         if (nameChar === " ") {
             result += "-";
-        } else if (/[a-zA-Z]/.test(nameChar)) {
+        } else if (/[a-zA-Z0-9]/.test(nameChar)) {
             result += nameChar;
         };
     };

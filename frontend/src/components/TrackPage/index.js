@@ -11,18 +11,15 @@ function TrackPage() {
     const { setCurrentSong } = useCurrentSong();
     const dispatch = useDispatch();
     const { mediumName, trackName } = useParams();
-    console.log(mediumName, trackName)
     useEffect(() => {
-        console.log("useEffect triggered");
         dispatch(loadTargetTrack(mediumName, trackName));
     }, [dispatch, mediumName, trackName])
 
-    const targetTrack = useSelector(state => Object.values(state.tracks));
+    const targetTrack = useSelector(state => Object.values(state.tracks))[0];
 
-    console.log(targetTrack?.id);
     useEffect(() => {
         dispatch(loadComments(targetTrack?.id));
-    }, [dispatch,targetTrack?.id]);
+    }, [dispatch, targetTrack?.id]);
 
     const comments = useSelector(state => Object.values(state.comments));
 
@@ -31,17 +28,17 @@ function TrackPage() {
             <div className="track-page-section">
                 <h1>{targetTrack?.name}</h1>
                 <img src={targetTrack?.trackImageURL} alt="track artwork" height="100px" width="100px"/>
-                <h2>{targetTrack?.medium.name}</h2>
-                <h2>{targetTrack?.album.artist}</h2>
-                <h2>{targetTrack?.album.name}</h2>
+                <h2>{targetTrack?.medium?.name}</h2>
+                <h2>{targetTrack?.album?.artist}</h2>
+                <h2>{targetTrack?.album?.name}</h2>
                 <button className="play-track" value={targetTrack?.fileURL} onClick={(e) => {
                     setCurrentSong({
                         fileURL: e.target.value,
                         trackImageURL: targetTrack?.trackImageURL,
                         name: targetTrack?.name,
-                        media: targetTrack?.medium.name,
-                        artist: targetTrack?.album.artist,
-                        album: targetTrack?.album.name
+                        media: targetTrack?.medium?.name,
+                        artist: targetTrack?.album?.artist,
+                        album: targetTrack?.album?.name
                     })
                 }}>Play</button>
             </div>

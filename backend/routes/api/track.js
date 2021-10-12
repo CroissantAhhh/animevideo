@@ -30,6 +30,17 @@ router.get(
 );
 
 router.get(
+    "/album/:albumId",
+    asyncHandler(async (req, res) => {
+        const albumId = req.params.albumId;
+        const tracks = await TracksRepository.listByAlbum(albumId);
+        return res.json({
+            tracks
+        });
+    }),
+);
+
+router.get(
     "/search/:mediumName/:trackName",
     asyncHandler(async (req, res) => {
         const mediumName = req.params.mediumName;
@@ -50,7 +61,7 @@ router.get(
             tracks
         });
     }),
-)
+);
 
 
 router.post(
@@ -61,7 +72,7 @@ router.post(
             track
         })
     })
-)
+);
 
 router.put(
     "/",

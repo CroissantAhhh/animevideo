@@ -16,6 +16,16 @@ async function search(query) {
     });
 };
 
+async function getTargetMedia(mediumName) {
+    return await Media.findAll({
+        where: {
+            name: {
+                [Op.iLike]: `%${mediumName.split("-").join(" ")}%`
+            }
+        }
+    });
+}
+
 async function create(details) {
     const media = await Media.create(details);
     return media.id;
@@ -43,6 +53,7 @@ async function del(id) {
 module.exports = {
     list,
     search,
+    getTargetMedia,
     create,
     update,
     del,

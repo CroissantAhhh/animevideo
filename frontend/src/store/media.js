@@ -14,6 +14,15 @@ export const loadMedia = () => async dispatch => {
     };
 };
 
+export const loadTargetMedia = (mediumName) => async dispatch => {
+    const response = await fetch(`/api/media/search/${mediumName}`);
+
+    if (response.ok) {
+        const media = await response.json();
+        dispatch(load(media["media"]));
+    };
+};
+
 export const searchMedia = (query) => async dispatch => {
     const response = await fetch(`/api/media/${query}`);
     if (response.ok) {
@@ -21,6 +30,7 @@ export const searchMedia = (query) => async dispatch => {
         dispatch(load(media["media"]));
     };
 }
+
 
 const mediaReducer = (state = {}, action) => {
     switch (action.type) {

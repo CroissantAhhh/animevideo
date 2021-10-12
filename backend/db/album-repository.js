@@ -1,6 +1,24 @@
 const { Op } = require("sequelize");
 const { Album } = require("./models");
+const { URLify } = require("../utils/helpers");
 
+async function listByMedia(mediumId) {
+    return await Album.findAll({
+        where: {
+            mediumId
+        }
+    });
+};
+
+async function getTargetAlbum(mediumName, albumName) {
+    const searched = await Album.findAll({
+        include: ["medium"],
+    });
+    return [searched.find(album => {
+        return ((URLify(album.medium.name) === mediumName) &&
+                (URLify(album.name) === albumName));
+    })];
+};
 
 async function search(query) {
     return await Album.findAll({
@@ -16,7 +34,7 @@ async function search(query) {
 async function create(details) {
     const album = await Album.create(details);
     return album.id;
-}
+};
 
 async function update(details) {
     const id = details.id;
@@ -30,7 +48,7 @@ async function update(details) {
       }
     );
     return id;
-}
+};
 
 async function del(id) {
     const album = Album.findByPk(id);
@@ -38,8 +56,10 @@ async function del(id) {
 };
 
 module.exports = {
+    listByMedia,
+    getTargetAlbum,
     search,
     create,
     update,
     del,
-}
+};

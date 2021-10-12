@@ -20,6 +20,29 @@ router.get(
 );
 
 router.get(
+    "/search/:mediumName/:albumName",
+    asyncHandler(async (req, res) => {
+        const mediumName = req.params.mediumName;
+        const albumName = req.params.albumName;
+        const album = await AlbumRepository.getTargetAlbum(mediumName, albumName);
+        return res.json({
+            album
+        });
+    }),
+)
+
+router.get(
+    "/media/:mediumId",
+    asyncHandler(async (req, res) => {
+        const mediumId = req.params.mediumId;
+        const albums = await AlbumRepository.listByMedia(mediumId);
+        return res.json({
+            albums
+        });
+    }),
+);
+
+router.get(
     "/:query",
     asyncHandler(async (req, res) => {
         const query = process(req.params.query);

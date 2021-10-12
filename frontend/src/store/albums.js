@@ -14,6 +14,24 @@ export const loadAlbums = () => async dispatch => {
     };
 };
 
+export const loadAlbumsByMedia = (mediumId) => async dispatch => {
+    const response = await fetch(`/api/albums/media/${mediumId}`);
+
+    if (response.ok) {
+        const albums = await response.json();
+        dispatch(load(albums["albums"]));
+    };
+};
+
+export const loadTargetAlbum = (mediumName, albumName) => async dispatch => {
+    const response = await fetch(`/api/albums/search/${mediumName}/${albumName}`);
+
+    if (response.ok) {
+        const albums = await response.json();
+        dispatch(load(albums["album"]));
+    };
+};
+
 export const searchAlbums = (query) => async dispatch => {
     const response = await fetch(`/api/albums/${query}`);
     if (response.ok) {

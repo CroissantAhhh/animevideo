@@ -1,7 +1,6 @@
 import CommentSection from "./CommentSection";
 
 function CommentsSection({ comments }) {
-    console.log(comments)
     return (
         <div className="comments-section">
             <h2>Comments</h2>

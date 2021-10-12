@@ -14,12 +14,22 @@ export const loadTracks = () => async dispatch => {
     };
 };
 
+export const loadTracksByAlbum = (albumId) => async dispatch => {
+    const response = await fetch(`/api/tracks/album/${albumId}`);
+
+    if (response.ok) {
+        const tracks = await response.json();
+        dispatch(load(tracks["tracks"]));
+    };
+};
+
+
 export const loadTargetTrack = (mediumName, trackName) => async dispatch => {
     const response = await fetch(`/api/tracks/search/${mediumName}/${trackName}`);
 
     if (response.ok) {
         const tracks = await response.json();
-        dispatch(load(tracks["tracks"]));
+        dispatch(load(tracks["track"]));
     };
 };
 

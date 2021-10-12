@@ -30,4 +30,15 @@ router.get(
     }),
 );
 
+router.get(
+    "/search/:mediumName",
+    asyncHandler(async (req, res) => {
+        const mediumName = process(req.params.mediumName)
+        const media = await MediaRepository.getTargetMedia(mediumName);
+        return res.json({
+            media
+        });
+    }),
+);
+
 module.exports = router;

@@ -8,6 +8,8 @@ import SearchResults from "./components/SearchResults";
 import CurrentSongProvider from "./context/currentSongContext";
 import SongPlayerBar from "./components/SongPlayerBar";
 import TrackPage from "./components/TrackPage";
+import MediaPage from "./components/MediaPage";
+import AlbumPage from "./components/AlbumPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,10 +31,10 @@ function App() {
               <SearchResults></SearchResults>
             </Route>
             <Route exact path="/:mediumName">
-                <p>Media Page Placeholder</p>
+                <MediaPage></MediaPage>
             </Route>
             <Route path="/:mediumName/albums/:albumName">
-                <p>Album Page Placeholder</p>
+                <AlbumPage></AlbumPage>
             </Route>
             <Route path="/:mediumName/tracks/:trackName">
                 <TrackPage></TrackPage>

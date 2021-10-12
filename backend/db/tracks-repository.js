@@ -23,6 +23,15 @@ async function list() {
     });
 };
 
+async function listByAlbum(albumId) {
+    return await Track.findAll({
+        include: ["album", "medium"],
+        where: {
+            albumId
+        }
+    })
+}
+
 async function shorterList(length) {
     return await Track.findAll({
         include: ["album", "medium"],
@@ -55,11 +64,11 @@ async function getTargetTrack(mediumName, trackName) {
             }
         }
     });
-    console.log(searched);
-    return searched.find(track => {
+    return [searched.find(track => {
         return URLify(track.medium.name) === mediumName;
-    });
-}
+    })];
+};
+
 async function search(query) {
     return await Track.findAll({
         include: ["album", "medium"],
@@ -97,6 +106,7 @@ async function del(id) {
 
 module.exports = {
     list,
+    listByAlbum,
     shorterList,
     get,
     getTargetTrack,

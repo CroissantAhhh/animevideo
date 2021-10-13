@@ -10,6 +10,7 @@ import SongPlayerBar from "./components/SongPlayerBar";
 import TrackPage from "./components/TrackPage";
 import MediaPage from "./components/MediaPage";
 import AlbumPage from "./components/AlbumPage";
+import UploadPage from "./components/UploadPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,14 +31,17 @@ function App() {
             <Route path="/search">
               <SearchResults></SearchResults>
             </Route>
+            <Route exact path="/upload">
+              <UploadPage></UploadPage>
+            </Route>
             <Route exact path="/:mediumName">
-                <MediaPage></MediaPage>
+              <MediaPage></MediaPage>
             </Route>
             <Route path="/:mediumName/albums/:albumName">
-                <AlbumPage></AlbumPage>
+              <AlbumPage></AlbumPage>
             </Route>
             <Route path="/:mediumName/tracks/:trackName">
-                <TrackPage></TrackPage>
+              <TrackPage></TrackPage>
             </Route>
           </Switch>
         )}

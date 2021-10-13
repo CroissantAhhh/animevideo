@@ -1,4 +1,7 @@
 import { Link, Switch, Route } from "react-router-dom";
+import MediaUploadPage from "./MediaUploadPage";
+import AlbumUploadPage from "./AlbumUploadPage";
+import TrackUploadPage from "./TrackUploadPage";
 
 function UploadPage() {
     return (
@@ -7,14 +10,14 @@ function UploadPage() {
             <Link to="/upload/album"></Link>
             <Link to="/upload/track"></Link>
             <Switch>
-                <Route path="/upload/media">
-
+                <Route path="/media">
+                    <MediaUploadPage></MediaUploadPage>
                 </Route>
-                <Route path="/upload/album">
-
+                <Route path="/album">
+                    <AlbumUploadPage></AlbumUploadPage>
                 </Route>
-                <Route path="/upload/track">
-
+                <Route path="/track">
+                    <TrackUploadPage></TrackUploadPage>
                 </Route>
             </Switch>
         </div>

@@ -1,18 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useCurrentSong } from "../../context/currentSongContext";
-import { loadComments } from "../../store/comments";
+import { loadComments, addComment } from "../../store/comments";
 import { loadTargetTrack } from "../../store/tracks";
 import { process } from "../../utils/process";
 import CommentsSection from "./CommentsSection";
 import "./TrackPage.css";
 
 function TrackPage() {
+    const [commentBody, setCommentBody] = useState("");
+    const [commentAdded, setCommentAdded] = useState(false);
+    const sessionUser = useSelector(state => state.session.user);
     const { setCurrentSong } = useCurrentSong();
     const dispatch = useDispatch();
     const { mediumName, trackName } = useParams();
+
     useEffect(() => {
         dispatch(loadTargetTrack(mediumName, trackName));
     }, [dispatch, mediumName, trackName])
@@ -21,9 +25,22 @@ function TrackPage() {
 
     useEffect(() => {
         dispatch(loadComments(targetTrack?.id));
-    }, [dispatch, targetTrack?.id]);
+        setCommentAdded(false);
+    }, [dispatch, targetTrack?.id, commentAdded]);
 
     const comments = useSelector(state => Object.values(state.comments));
+
+    const handleAddComment = async (e) => {
+        e.preventDefault();
+        const payload = {
+            body: commentBody,
+            userId: sessionUser.id,
+            trackId: targetTrack?.id
+        }
+
+        dispatch(addComment(payload));
+        setCommentAdded(true);
+    };
 
     return (
         <div className="track-page">
@@ -45,11 +62,15 @@ function TrackPage() {
                 }}>Play</button>
             </div>
             <div className="comments-section">
-                <form className="add-coment-section">
+                <form className="add-coment-section" onSubmit={handleAddComment}>
                     <label htmlFor="add-coment-form">Add a Comment:</label>
-                    <textarea id="add-comment-form" name="add-comment-form"></textarea>
+                    <textarea
+                    id="add-comment-form"
+                    name="add-comment-form"
+                    value={commentBody}
+                    onChange={e => setCommentBody(e.target.value)}></textarea>
+                    <button className="add-comment-button" type="submit">Add Comment</button>
                 </form>
-                <button>Add Comment</button>
                 <CommentsSection comments={comments}></CommentsSection>
             </div>
         </div>

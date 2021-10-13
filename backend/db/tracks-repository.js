@@ -64,6 +64,7 @@ async function getTargetTrack(mediumName, trackName) {
             }
         }
     });
+
     return [searched.find(track => {
         return URLify(track.medium.name) === mediumName;
     })];

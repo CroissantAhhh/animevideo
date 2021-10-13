@@ -20,4 +20,11 @@ router.get(
     }),
 );
 
+router.post(
+    "/",
+    asyncHandler(async (req, res) => {
+        await CommentRepository.create(req.body);
+    })
+);
+
 module.exports = router;

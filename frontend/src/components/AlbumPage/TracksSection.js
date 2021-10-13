@@ -4,7 +4,7 @@ function TracksSection({ tracks }) {
     return (
         <div className="tracks-section">
             <h2>Tracks</h2>
-            {tracks.map((track, index) => {
+            {tracks.map((track) => {
                 return (
                     <TrackDetails track={track} key={track.id}></TrackDetails>
                 )

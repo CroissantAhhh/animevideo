@@ -15,7 +15,7 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <p>Welcome User!</p>
+        <p>Welcome {sessionUser.username}!</p>
         <ProfileButton user={sessionUser} />
         <button
         className="logout-button"

@@ -1,4 +1,7 @@
 export const process = (name) => {
+    if (!name) {
+        return "";
+    }
     let result = "";
     for (let nameChar of name) {
         if (nameChar === " ") {

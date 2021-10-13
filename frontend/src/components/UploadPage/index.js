@@ -6,17 +6,17 @@ import TrackUploadPage from "./TrackUploadPage";
 function UploadPage() {
     return (
         <div className="upload-options">
-            <Link to="/upload/media"></Link>
-            <Link to="/upload/album"></Link>
-            <Link to="/upload/track"></Link>
+            <p><Link to="/upload/media">Media Upload</Link></p>
+            <p><Link to="/upload/album">Album Upload</Link></p>
+            <p><Link to="/upload/track">Track Upload</Link></p>
             <Switch>
-                <Route path="/upload/media">
+                <Route exact path="/upload/media">
                     <MediaUploadPage></MediaUploadPage>
                 </Route>
-                <Route path="/upload/album">
+                <Route exact path="/upload/album">
                     <AlbumUploadPage></AlbumUploadPage>
                 </Route>
-                <Route path="/upload/track">
+                <Route exact path="/upload/track">
                     <TrackUploadPage></TrackUploadPage>
                 </Route>
             </Switch>

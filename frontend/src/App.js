@@ -31,7 +31,7 @@ function App() {
             <Route path="/search">
               <SearchResults></SearchResults>
             </Route>
-            <Route exact path="/upload">
+            <Route path="/upload">
               <UploadPage></UploadPage>
             </Route>
             <Route exact path="/:mediumName">

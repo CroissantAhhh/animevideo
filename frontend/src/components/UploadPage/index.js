@@ -10,13 +10,13 @@ function UploadPage() {
             <Link to="/upload/album"></Link>
             <Link to="/upload/track"></Link>
             <Switch>
-                <Route path="/media">
+                <Route path="/upload/media">
                     <MediaUploadPage></MediaUploadPage>
                 </Route>
-                <Route path="/album">
+                <Route path="/upload/album">
                     <AlbumUploadPage></AlbumUploadPage>
                 </Route>
-                <Route path="/track">
+                <Route path="/upload/track">
                     <TrackUploadPage></TrackUploadPage>
                 </Route>
             </Switch>

@@ -41,4 +41,14 @@ router.get(
     }),
 );
 
+router.post(
+    "/",
+    asyncHandler(async (req, res) => {
+        const medium = await MediaRepository.create(req.body);
+        return res.json({
+            medium
+        })
+    })
+);
+
 module.exports = router;

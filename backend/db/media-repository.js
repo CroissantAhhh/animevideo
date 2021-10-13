@@ -28,7 +28,7 @@ async function getTargetMedia(mediumName) {
 
 async function create(details) {
     const media = await Media.create(details);
-    return media.id;
+    return media;
 }
 
 async function update(details) {

@@ -5,6 +5,7 @@ import LoginFormModal from '../LoginFormModal';
 import { logoutSession } from '../../store/session';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
+import UploadModal from '../UploadModal';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -17,6 +18,7 @@ function Navigation({ isLoaded }){
       <>
         <p>Welcome {sessionUser.username}!</p>
         <ProfileButton user={sessionUser} />
+        <UploadModal />
         <button
         className="logout-button"
         onClick={() => dispatch(logoutSession())}>Logout</button>

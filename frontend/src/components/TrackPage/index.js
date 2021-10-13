@@ -11,6 +11,7 @@ import "./TrackPage.css";
 
 function TrackPage() {
     const [commentBody, setCommentBody] = useState("");
+    const [validationErrors, setValidationErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
     const { setCurrentSong } = useCurrentSong();
     const dispatch = useDispatch();
@@ -28,16 +29,28 @@ function TrackPage() {
 
     const comments = useSelector(state => Object.values(state.comments));
 
+    const validate = () => {
+        const errors = [];
+        if (!commentBody) errors.push('Empty comment body');
+        return errors;
+    };
+
     const handleAddComment = async (e) => {
         e.preventDefault();
+
+        const errors = validate();
+
+        if (errors.length > 0) return setValidationErrors(errors);
+
         const payload = {
             body: commentBody,
             userId: sessionUser.id,
             trackId: targetTrack?.id
-        }
+        };
 
         dispatch(addComment(payload));
         setCommentBody("");
+        setValidationErrors([]);
     };
 
     return (
@@ -61,6 +74,14 @@ function TrackPage() {
             </div>
             <div className="comments-section">
                 <form className="add-coment-section" onSubmit={handleAddComment}>
+                    {validationErrors.length > 0 && (
+                        <div>
+                            The following errors were found:
+                            <ul>
+                                {validationErrors.map(error => <li key={error}>{error}</li>)}
+                            </ul>
+                        </div>
+                    )}
                     <label htmlFor="add-coment-form">Add a Comment:</label>
                     <textarea
                     id="add-comment-form"

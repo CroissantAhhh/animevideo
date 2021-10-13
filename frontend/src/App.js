@@ -10,7 +10,9 @@ import SongPlayerBar from "./components/SongPlayerBar";
 import TrackPage from "./components/TrackPage";
 import MediaPage from "./components/MediaPage";
 import AlbumPage from "./components/AlbumPage";
-import UploadPage from "./components/UploadPage";
+import MediaUploadPage from "./components/UploadModal/MediaUploadPage";
+import AlbumUploadPage from "./components/UploadModal/AlbumUploadPage";
+import TrackUploadPage from "./components/UploadModal/TrackUploadPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,8 +33,14 @@ function App() {
             <Route path="/search">
               <SearchResults></SearchResults>
             </Route>
-            <Route exact path="/upload">
-              <UploadPage></UploadPage>
+            <Route exact path="/upload/media">
+              <MediaUploadPage></MediaUploadPage>
+            </Route>
+            <Route exact path="/upload/album">
+              <AlbumUploadPage></AlbumUploadPage>
+            </Route>
+            <Route exact path="/upload/track">
+              <TrackUploadPage></TrackUploadPage>
             </Route>
             <Route exact path="/:mediumName">
               <MediaPage></MediaPage>

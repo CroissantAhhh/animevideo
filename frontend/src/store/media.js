@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const LOAD = 'media/LOAD';
 
 const load = list => ({
@@ -13,6 +15,22 @@ export const loadMedia = () => async dispatch => {
         dispatch(load(media["media"]));
     };
 };
+
+export const addMedia = (formData) => async dispatch => {
+    const response  = await csrfFetch("/api/media", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+        const medium = await response.json();
+        dispatch(load([medium["medium"]]));
+        return medium["medium"];
+    }
+}
 
 export const loadTargetMedia = (mediumName) => async dispatch => {
     const response = await fetch(`/api/media/search/${mediumName}`);

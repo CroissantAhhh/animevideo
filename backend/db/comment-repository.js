@@ -12,7 +12,7 @@ async function listByTrack(trackId) {
 
 async function create(details) {
     const comment = await Comment.create(details);
-    return comment.id;
+    return comment;
 }
 
 async function update(details) {

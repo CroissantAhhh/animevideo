@@ -33,7 +33,7 @@ export const addComment = (formData) => async dispatch => {
 
     if (response.ok) {
         const comment = await response.json();
-        dispatch(addOne(comment));
+        dispatch(addOne(comment["comment"]));
     }
 }
 

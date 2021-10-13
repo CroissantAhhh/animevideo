@@ -23,7 +23,10 @@ router.get(
 router.post(
     "/",
     asyncHandler(async (req, res) => {
-        await CommentRepository.create(req.body);
+        const comment = await CommentRepository.create(req.body);
+        return res.json({
+            comment
+        })
     })
 );
 

@@ -11,7 +11,6 @@ import "./TrackPage.css";
 
 function TrackPage() {
     const [commentBody, setCommentBody] = useState("");
-    const [commentAdded, setCommentAdded] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     const { setCurrentSong } = useCurrentSong();
     const dispatch = useDispatch();
@@ -25,8 +24,7 @@ function TrackPage() {
 
     useEffect(() => {
         dispatch(loadComments(targetTrack?.id));
-        setCommentAdded(false);
-    }, [dispatch, targetTrack?.id, commentAdded]);
+    }, [dispatch, targetTrack?.id]);
 
     const comments = useSelector(state => Object.values(state.comments));
 
@@ -39,7 +37,7 @@ function TrackPage() {
         }
 
         dispatch(addComment(payload));
-        setCommentAdded(true);
+        setCommentBody("");
     };
 
     return (

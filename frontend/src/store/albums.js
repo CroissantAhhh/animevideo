@@ -14,6 +14,9 @@ export const loadAlbums = () => async dispatch => {
     };
 };
 
+export const addAlbum = (formData) => async dispatch => {
+
+}
 export const loadAlbumsByMedia = (mediumId) => async dispatch => {
     const response = await fetch(`/api/albums/media/${mediumId}`);
 

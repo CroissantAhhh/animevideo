@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addMedia } from "../../store/media"
-import { process } from "../../utils/process";
+import { addMedia } from "../../../store/media"
+import { process } from "../../../utils/process";
 
 function MediaUploadPage() {
     const dispatch = useDispatch();

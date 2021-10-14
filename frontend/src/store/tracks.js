@@ -1,3 +1,4 @@
+import { csrfFetch } from "./csrf";
 const LOAD = 'tracks/LOAD';
 
 const load = list => ({
@@ -12,6 +13,30 @@ export const loadTracks = () => async dispatch => {
         const tracks = await response.json();
         dispatch(load(tracks["tracks"]));
     };
+};
+
+export const loadTrackById = (trackId) => async dispatch => {
+    const response = await fetch(`/api/tracks/byId/${trackId}`);
+
+    if (response.ok) {
+        const track = await response.json();
+        dispatch(load([track["track"]]));
+    };
+};
+
+export const addTrack = (formData) => async dispatch => {
+    const response  = await csrfFetch("/api/tracks", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+        const newTrackId = await response.json();
+        return await dispatch(loadTrackById(newTrackId));
+    }
 };
 
 export const loadTracksByAlbum = (albumId) => async dispatch => {

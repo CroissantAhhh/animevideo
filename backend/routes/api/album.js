@@ -53,4 +53,14 @@ router.get(
     }),
 );
 
+router.post(
+    "/",
+    asyncHandler(async (req, res) => {
+        const album = await AlbumRepository.create(req.body);
+        return res.json({
+            album
+        })
+    })
+);
+
 module.exports = router;

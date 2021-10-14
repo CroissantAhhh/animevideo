@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { loadTargetAlbum } from "../../store/albums";
 import { loadTracksByAlbum } from "../../store/tracks"
 import TracksSection from "./TracksSection";
+import TrackUploadModal from "../UploadModals/TrackUploadModal";
 
 function AlbumPage() {
     const dispatch = useDispatch();
@@ -23,10 +24,13 @@ function AlbumPage() {
 
     return (
         <div className="album-page">
-            <h1>{targetAlbum?.name}</h1>
-            <img src={targetAlbum?.albumImageURL} height="200px" width="200px" alt="album artwork" />
-            <Link to={`/${mediumName}`}></Link>
-            <h2>{targetAlbum?.artist}</h2>
+            <div className="album-details">
+                <h1>{targetAlbum?.name}</h1>
+                <img src={targetAlbum?.albumImageURL} height="200px" width="200px" alt="album artwork" />
+                <Link to={`/${mediumName}`}></Link>
+                <h2>{targetAlbum?.artist}</h2>
+            </div>
+            <TrackUploadModal album={targetAlbum}></TrackUploadModal>
             <TracksSection tracks={tracks}></TracksSection>
         </div>
     )

@@ -1,19 +1,20 @@
+
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
-import MediaUploadPage from "./MediaUploadModal";
+import AlbumUploadPage from "./AlbumUploadPage";
 
-function MediaUploadModal() {
+function AlbumUploadModal({ medium }) {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <button className="upload-nav-button" onClick={() => setShowModal(true)}>Upload Media</button>
+            <button className="upload-album-button" onClick={() => setShowModal(true)}>Upload Album</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <MediaUploadPage></MediaUploadPage>
+                    <AlbumUploadPage medium={medium}></AlbumUploadPage>
                 </Modal>
             )}
         </>
     )
 };
 
-export default MediaUploadModal;
+export default AlbumUploadModal;

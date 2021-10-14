@@ -33,7 +33,7 @@ async function search(query) {
 
 async function create(details) {
     const album = await Album.create(details);
-    return album.id;
+    return album;
 };
 
 async function update(details) {

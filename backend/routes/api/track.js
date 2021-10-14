@@ -20,6 +20,16 @@ router.get(
 );
 
 router.get(
+    "/byId/:trackId",
+    asyncHandler(async (req, res) => {
+        const track = await TracksRepository.get(req.params.trackId);
+        return res.json({
+            track
+        });
+    }),
+);
+
+router.get(
     "/random",
     asyncHandler(async (req, res) => {
         const tracks = await TracksRepository.getRandom(20);
@@ -67,10 +77,7 @@ router.get(
 router.post(
     "/",
     asyncHandler(async (req, res) => {
-        const track = await TracksRepository.create(req.body)
-        return res.json({
-            track
-        })
+        return await TracksRepository.create(req.body)
     })
 );
 

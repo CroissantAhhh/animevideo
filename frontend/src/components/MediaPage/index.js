@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { loadTargetMedia } from "../../store/media";
 import { loadAlbumsByMedia } from "../../store/albums";
 import AlbumsSection from "./AlbumsSection";
+import AlbumUploadModal from "../UploadModals/AlbumUploadModal";
 
 function MediaPage() {
     const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function MediaPage() {
                 <a href={targetMedia?.infoLink}>Info Link</a>
                 <p>{targetMedia?.description}</p>
             </div>
+            <AlbumUploadModal medium={targetMedia}></AlbumUploadModal>
             <AlbumsSection albums={albums}></AlbumsSection>
         </div>
     )

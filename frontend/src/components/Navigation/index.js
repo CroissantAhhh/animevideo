@@ -5,7 +5,7 @@ import LoginFormModal from '../LoginFormModal';
 import { logoutSession } from '../../store/session';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
-import UploadMediaModal from '../UploadModals/MediaUploadModal';
+import MediaUploadModal from "../UploadModals/MediaUploadModal";
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);

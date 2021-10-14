@@ -30,7 +30,7 @@ export const addMedia = (formData) => async dispatch => {
         dispatch(load([medium["medium"]]));
         return medium["medium"];
     }
-}
+};
 
 export const loadTargetMedia = (mediumName) => async dispatch => {
     const response = await fetch(`/api/media/search/${mediumName}`);

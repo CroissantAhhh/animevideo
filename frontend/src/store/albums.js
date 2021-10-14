@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const LOAD = 'albums/LOAD';
 
 const load = list => ({
@@ -15,8 +17,21 @@ export const loadAlbums = () => async dispatch => {
 };
 
 export const addAlbum = (formData) => async dispatch => {
+    const response  = await csrfFetch("/api/albums", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    });
 
-}
+    if (response.ok) {
+        const album = await response.json();
+        dispatch(load([album["album"]]));
+        return album["album"];
+    }
+};
+
 export const loadAlbumsByMedia = (mediumId) => async dispatch => {
     const response = await fetch(`/api/albums/media/${mediumId}`);
 

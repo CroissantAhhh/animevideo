@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
-import MediaUploadPage from "./MediaUploadModal";
+import TrackUploadPage from "./TrackUploadPage";
 
-function MediaUploadModal() {
+function TrackUploadModal({ album }) {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <button className="upload-nav-button" onClick={() => setShowModal(true)}>Upload Media</button>
+            <button className="upload-nav-button" onClick={() => setShowModal(true)}>Upload Track</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <MediaUploadPage></MediaUploadPage>
+                    <TrackUploadPage album={album}></TrackUploadPage>
                 </Modal>
             )}
         </>
     )
 };
 
-export default MediaUploadModal;
+export default TrackUploadModal;

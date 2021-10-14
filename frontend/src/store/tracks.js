@@ -1,9 +1,15 @@
 import { csrfFetch } from "./csrf";
 const LOAD = 'tracks/LOAD';
+const ADD_ONE = 'tracks/ADD_ONE'
 
 const load = list => ({
     type: LOAD,
     list,
+});
+
+const addOne = track => ({
+    type: ADD_ONE,
+    track
 });
 
 export const loadTracks = () => async dispatch => {
@@ -34,8 +40,9 @@ export const addTrack = (formData) => async dispatch => {
     });
 
     if (response.ok) {
-        const newTrackId = await response.json();
-        return await dispatch(loadTrackById(newTrackId));
+        const newTrack = await response.json();
+        dispatch(addOne(newTrack["track"]));
+        return newTrack["track"];
     }
 };
 
@@ -83,6 +90,8 @@ const tracksReducer = (state = {}, action) => {
                 tracks[track.id] = track;
             };
             return tracks;
+        case ADD_ONE:
+            return {...state, [action.track.id]: action.track}
         default:
             return state;
     };

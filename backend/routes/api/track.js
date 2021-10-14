@@ -77,7 +77,10 @@ router.get(
 router.post(
     "/",
     asyncHandler(async (req, res) => {
-        return await TracksRepository.create(req.body)
+        const track = await TracksRepository.create(req.body);
+        return res.json({
+            track
+        })
     })
 );
 

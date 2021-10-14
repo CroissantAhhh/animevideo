@@ -83,7 +83,9 @@ async function search(query) {
 
 async function create(details) {
     const track = await Track.create(details);
-    return track.id;
+    return await Track.findByPk(track.id, {
+        include: ["album", "medium"],
+    })
 };
 
 async function update(details) {

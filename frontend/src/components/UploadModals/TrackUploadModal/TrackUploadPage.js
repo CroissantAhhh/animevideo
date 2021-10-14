@@ -47,6 +47,7 @@ function TrackUploadPage({ album }) {
         }
 
         const newTrack = await dispatch(addTrack(payload));
+        console.log(newTrack);
         history.push(`/${process(newTrack.medium.name)}/tracks/${process(newTrack.name)}`);
     };
 

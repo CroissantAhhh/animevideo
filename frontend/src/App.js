@@ -22,25 +22,27 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       <CurrentSongProvider>
-        {isLoaded && (
-          <Switch>
-            <Route exact path="/">
-              <TrackList></TrackList>
-            </Route>
-            <Route path="/search">
-              <SearchResults></SearchResults>
-            </Route>
-            <Route exact path="/:mediumName">
-              <MediaPage></MediaPage>
-            </Route>
-            <Route path="/:mediumName/albums/:albumName">
-              <AlbumPage></AlbumPage>
-            </Route>
-            <Route path="/:mediumName/tracks/:trackName">
-              <TrackPage></TrackPage>
-            </Route>
-          </Switch>
-        )}
+        <div className="main-page-content">
+          {isLoaded && (
+            <Switch>
+              <Route exact path="/">
+                <TrackList></TrackList>
+              </Route>
+              <Route path="/search">
+                <SearchResults></SearchResults>
+              </Route>
+              <Route exact path="/:mediumName">
+                <MediaPage></MediaPage>
+              </Route>
+              <Route path="/:mediumName/albums/:albumName">
+                <AlbumPage></AlbumPage>
+              </Route>
+              <Route path="/:mediumName/tracks/:trackName">
+                <TrackPage></TrackPage>
+              </Route>
+            </Switch>
+          )}
+        </div>
         <SongPlayerBar></SongPlayerBar>
       </CurrentSongProvider>
     </>

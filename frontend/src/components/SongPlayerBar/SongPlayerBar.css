@@ -1,6 +1,32 @@
 .song-player-bar {
+    display: flex;
+    flex-direction: row;
     position: fixed;
     width: 100%;
     bottom: 0;
-    background-color: brown;
+    background-color: rgb(36, 36, 36);
+}
+
+.song-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.song-text-info {
+    padding-left: 10%;
+    color: white;
+}
+
+audio {
+    width: 50%;
+    height: 100px;
+    padding-right: 50px;
+}
+
+.song-player {
+    width: 80%;
+}
+
+.player-button {
+    width: 50px;
 }

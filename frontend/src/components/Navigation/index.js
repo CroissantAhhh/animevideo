@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -10,6 +11,8 @@ import MediaUploadModal from "../UploadModals/MediaUploadModal";
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState('');
 
   let sessionLinks;
 
@@ -33,6 +36,12 @@ function Navigation({ isLoaded }){
     );
   }
 
+  const submitSearch = (event) => {
+    event.preventDefault();
+    const processedQuery = searchQuery.toLowerCase().split(' ').join('+');
+    history.push(`/search?query=${processedQuery}`);
+  }
+
   return (
     <header className="nav-bar">
       <div className="nav-bar-container">
@@ -46,12 +55,13 @@ function Navigation({ isLoaded }){
         </div>
         <div className="nav-bar-middle">
           <div className="nav-bar-search">
-            <form className="search-form" action="/search" method="GET">
+            <form className="search-form" onSubmit={submitSearch}>
               <input
               className="search-field"
               placeholder="Search"
-              type="search"
-              name="query"></input>
+              type="text"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}></input>
               <button
               className="search-submit"
               type="submit"

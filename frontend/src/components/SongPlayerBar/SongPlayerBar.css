@@ -4,10 +4,12 @@
     position: fixed;
     width: 100%;
     bottom: 0;
+    height: 100px;
     background-color: rgb(36, 36, 36);
 }
 
 .song-info {
+    width: 200px;
     display: flex;
     flex-direction: row;
 }
@@ -15,18 +17,85 @@
 .song-text-info {
     padding-left: 10%;
     color: white;
-}
-
-audio {
-    width: 50%;
-    height: 100px;
-    padding-right: 50px;
-}
-
-.song-player {
-    width: 80%;
-}
-
-.player-button {
     width: 50px;
+}
+
+h2 {
+    font-size: 7px;
+    display: inline-block;
+}
+
+.rhap_container {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 200px);
+}
+
+.rhap_main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.rhap_progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 90%;
+}
+
+.rhap_current-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+    font-size: 12px;
+    color: white;
+}
+
+.rhap_progress-section {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.rhap_progress-bar {
+    width: 95%;
+    height: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.rhap_progress-indicator {
+    height: 20px;
+    width: 20px;
+    background-color: blue;
+    z-index: 1;
+    position: relative;
+}
+
+.rhap_progress-filled {
+    width: 90%;
+    height: 100%;
+    background-color: red;
+    border-radius: 5px;
+    position: relative;
+}
+
+.rhap_time {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+    color: white;
+}
+
+.rhap_controls-section {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    justify-content: space-around;
 }

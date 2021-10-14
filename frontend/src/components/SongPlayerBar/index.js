@@ -1,5 +1,6 @@
 import { useCurrentSong } from "../../context/currentSongContext";
 import AudioControls from "./AudioControls";
+import AudioPlayer from "react-h5-audio-player";
 import "./SongPlayerBar.css";
 
 
@@ -8,7 +9,7 @@ function SongPlayerBar() {
 
     return (
         <div className="song-player-bar">
-            <AudioControls file={currentSong.fileURL}></AudioControls>
+            <AudioPlayer autoPlay src={currentSong.fileURL}></AudioPlayer>
             <div className="song-info">
                 <img src={currentSong.trackImageURL} alt="track artwork" height="100px" width="100px"></img>
                 <div className="song-text-info">

@@ -1,11 +1,15 @@
 import MediaResults from "./MediaResults";
 import AlbumResults from "./AlbumResults";
 import TrackResults from "./TrackResults";
+import { useEffect, useState } from 'react';
 
 function SearchResults() {
-
     const queryString = window.location.search;
-    const searchString = queryString.split("?query=")[1];
+    const [searchString, setSearchString] = useState('');
+    useEffect(() => {
+        setSearchString(queryString.split("?query=")[1]);
+    }, [queryString]);
+
     return (
         <div className="search-results">
             <p>Search Results For: {searchString}</p>

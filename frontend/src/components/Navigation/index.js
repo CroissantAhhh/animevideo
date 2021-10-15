@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import { logoutSession } from '../../store/session';
 import { storeSearch } from '../../store/search';
@@ -20,8 +19,9 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <p>Welcome {sessionUser.username}!</p>
-        <ProfileButton user={sessionUser} />
+        <div className="username-display">
+          <h2 style={{fontSize: "20px", color: "white"}}>{sessionUser.username}</h2>
+        </div>
         <MediaUploadModal></MediaUploadModal>
         <button
         className="logout-button"
@@ -50,14 +50,17 @@ function Navigation({ isLoaded }){
       <div className="nav-bar-container">
         <div className="nav-bar-left">
           <div className="nav-bar-logo">
-            <img src="https://res.cloudinary.com/dmtj0amo0/image/upload/v1633909363/AVicon_c6v7xp.png" alt="logo" height="70px" width="70px"/>
+            <img src="https://res.cloudinary.com/dmtj0amo0/image/upload/v1634330905/AVlogoTrans_t7kf2p.png" alt="logo" height="70px" width="70px"/>
           </div>
           <div className="nav-bar-site-name">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">
+              <img src="https://res.cloudinary.com/dmtj0amo0/image/upload/v1634329237/avatuneName_yipjwf.png" alt="name" />
+            </NavLink>
           </div>
         </div>
         <div className="nav-bar-middle">
           <div className="nav-bar-search">
+            <img className="search-icon" alt="search icon" src="https://res.cloudinary.com/dmtj0amo0/image/upload/v1634331265/search-icon-png-9985_pypbjx.png" />
             <form className="search-form" onSubmit={submitSearch}>
               <input
               className="search-field"
@@ -65,17 +68,10 @@ function Navigation({ isLoaded }){
               type="text"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}></input>
-              <button
-              className="search-submit"
-              type="submit"
-              >Search</button>
             </form>
           </div>
         </div>
         <div className="nav-bar-right">
-          <div className="user-message">
-
-          </div>
           <div className="log">
             {isLoaded && sessionLinks}
           </div>

@@ -1,0 +1,13 @@
+.track-list-title {
+    background-color: rgb(1, 166, 196);;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 200px;
+}
+
+.track-list-title h2 {
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 60px;
+}

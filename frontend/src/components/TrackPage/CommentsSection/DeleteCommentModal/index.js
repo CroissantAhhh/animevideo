@@ -10,9 +10,7 @@ function DeleteCommentModal({ comment }) {
     const dispatch = useDispatch();
 
     const confirmDelete = async (e) => {
-        e.preventDefault();
-
-        dispatch(deleteComment(comment.id))
+        await dispatch(deleteComment(comment.id))
     };
 
     return (

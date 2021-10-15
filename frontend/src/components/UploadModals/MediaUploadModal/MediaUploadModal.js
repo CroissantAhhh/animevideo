@@ -41,7 +41,6 @@ function MediaUploadPage() {
         }
 
         const newMedia = await dispatch(addMedia(payload));
-        console.log(newMedia);
         history.push(`/${process(newMedia.name)}`)
     };
 

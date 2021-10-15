@@ -39,7 +39,6 @@ function AlbumUploadPage({ medium }) {
         }
 
         const newAlbum = await dispatch(addAlbum(payload));
-        console.log(newAlbum);
         history.push(`/${process(medium.name)}/albums/${process(newAlbum.name)}`);
     };
 

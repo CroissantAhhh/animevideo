@@ -6,9 +6,11 @@
     bottom: 0;
     height: 100px;
     background-color: rgb(36, 36, 36);
+    border-top: 1px solid black;
 }
 
 .song-info {
+    padding-right: 200px;
     width: 300px;
     display: flex;
     flex-direction: row;
@@ -31,6 +33,7 @@ h2 {
 .rhap_container {
     display: flex;
     flex-direction: row;
+    padding-left: 200px;
     width: calc(100% - 300px);
 }
 
@@ -79,7 +82,7 @@ h2 {
     border-radius: 5px;
     z-index: 1;
     position: absolute;
-};
+}
 
 .rhap_progress-filled:hover {
     width: 90%;
@@ -88,17 +91,17 @@ h2 {
     border-radius: 5px;
     z-index: 1;
     position: absolute;
-};
+}
 
 
-#root > div.song-player-bar > div.rhap_container.rhap_loop-off > div > div.rhap_progress-section > div.rhap_time.rhap_total-time {
+div.rhap_time.rhap_total-time {
     font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 5%;
     color: white;
-};
+}
 
 .rhap_controls-section {
     display: flex;

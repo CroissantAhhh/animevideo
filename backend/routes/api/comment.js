@@ -44,7 +44,9 @@ router.delete(
     "/:id",
     asyncHandler(async (req, res) => {
         await CommentRepository.del(req.params.id);
-        return req.params.id;
+        return res.json({
+
+        });
     })
 )
 

@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 function SearchResults() {
     const queryString = useSelector(state => state.search.search);
 
-    console.log(queryString);
     return (
         <div className="search-results">
             <p>Search Results For: {queryString}</p>

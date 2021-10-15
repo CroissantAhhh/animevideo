@@ -5,7 +5,6 @@ const { URLify } = require("../utils/helpers");
 
 async function rollTracks(length) {
     const DATASIZE = await Track.count() - 1;
-    console.log(DATASIZE);
     let result = [];
     while (result.length < length) {
         let randomIndex = Math.floor(Math.random() * DATASIZE) + 1;

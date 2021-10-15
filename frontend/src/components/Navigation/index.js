@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import { logoutSession } from '../../store/session';
+import { storeSearch } from '../../store/search';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 import MediaUploadModal from "../UploadModals/MediaUploadModal";
@@ -39,6 +40,8 @@ function Navigation({ isLoaded }){
   const submitSearch = (event) => {
     event.preventDefault();
     const processedQuery = searchQuery.toLowerCase().split(' ').join('+');
+    setSearchQuery('');
+    dispatch(storeSearch(processedQuery));
     history.push(`/search?query=${processedQuery}`);
   }
 

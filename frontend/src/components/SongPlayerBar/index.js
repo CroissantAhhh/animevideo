@@ -1,5 +1,4 @@
 import { useCurrentSong } from "../../context/currentSongContext";
-import AudioControls from "./AudioControls";
 import AudioPlayer from "react-h5-audio-player";
 import "./SongPlayerBar.css";
 

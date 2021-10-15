@@ -5,12 +5,14 @@ import media from "./media";
 import tracks from "./tracks";
 import albums from "./albums";
 import comments from "./comments";
+import search from "./search";
 
 const rootReducer = combineReducers({
     media,
     albums,
     tracks,
     comments,
+    search,
     session,
 });
 

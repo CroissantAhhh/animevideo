@@ -90,14 +90,15 @@ h2 {
     position: absolute;
 };
 
-.rhap_time.rhap_total-time {
+
+#root > div.song-player-bar > div.rhap_container.rhap_loop-off > div > div.rhap_progress-section > div.rhap_time.rhap_total-time {
     font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 5%;
     color: white;
-}
+};
 
 .rhap_controls-section {
     display: flex;
@@ -110,12 +111,12 @@ h2 {
     display: none;
 }
 
-.rhap_main-control {
-    width: 80%;
+.rhap_main-controls {
+    display: flex;
+    justify-content: center;
 }
 
 .rhap_rewind-button {
-    width: 30%;
     font-size: 35px;
     color: white;
     background-color: rgb(36, 36, 36);
@@ -123,7 +124,6 @@ h2 {
 }
 
 .rhap_play-pause-button {
-    width: 40%;
     font-size: 35px;
     color: white;
     background-color: rgb(36, 36, 36);
@@ -131,7 +131,6 @@ h2 {
 }
 
 .rhap_forward-button {
-    width: 30%;
     font-size: 35px;
     color: white;
     background-color: rgb(36, 36, 36);

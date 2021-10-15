@@ -16,22 +16,15 @@ async function create(details) {
 }
 
 async function update(details) {
-    const id = details.id;
-    delete details.id;
-    await Comment.update(
-      details,
-      {
-        where: { id },
-        returning: true,
-        plain: true,
-      }
-    );
-    return id;
+    const comment = await Comment.findByPk(details.id);
+    comment.body = details.body;
+    await comment.save();
+    return comment;
 }
 
 async function del(id) {
-    const comment = Comment.findByPk(id);
-    comment.destroy();
+    const comment = await Comment.findByPk(id);
+    await comment.destroy();
 };
 
 module.exports = {

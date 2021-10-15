@@ -30,4 +30,22 @@ router.post(
     })
 );
 
+router.put(
+    "/",
+    asyncHandler(async (req, res) => {
+        const comment = await CommentRepository.update(req.body);
+        return res.json({
+            comment
+        })
+    })
+)
+
+router.delete(
+    "/:id",
+    asyncHandler(async (req, res) => {
+        await CommentRepository.del(req.params.id);
+        return req.params.id;
+    })
+)
+
 module.exports = router;

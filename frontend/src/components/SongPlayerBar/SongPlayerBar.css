@@ -19,10 +19,14 @@
 .song-text-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-left: 10%;
+    justify-content: space-evenly;
+    padding: 15px;
     color: white;
     width: calc(100% - 100px);
+}
+
+.song-text-track {
+    font-size: 15px;
 }
 
 h2 {
@@ -35,6 +39,7 @@ h2 {
     flex-direction: row;
     padding-left: 200px;
     width: calc(100% - 300px);
+    margin-right: 50px;
 }
 
 .rhap_main {

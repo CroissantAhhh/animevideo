@@ -14,10 +14,17 @@ function MediaResults({ query }) {
 
     return (
         <div className="media-results">
-            <h2>Media</h2>
-            {mediaArray.map(medium => {
-                return <MediaResult medium={medium} key={medium.id}></MediaResult>
-            })}
+            <div className="media-results-title">
+                <h2 className="media-results-header">Media:</h2>
+            </div>
+            <div className="media-results-content">
+                {mediaArray.length > 0 && mediaArray.map(medium => {
+                    return <MediaResult medium={medium} key={medium.id}></MediaResult>
+                })}
+                {mediaArray.length === 0 &&
+                    <h3>No results found.</h3>
+                }
+            </div>
         </div>
     )
 }

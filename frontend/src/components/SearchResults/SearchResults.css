@@ -1,0 +1,59 @@
+.search-results-title {
+    background-color: rgb(1, 166, 196);;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 200px;
+}
+
+.search-results-title h2 {
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 60px;
+}
+
+.media-results-title {
+    height: 50px;
+    padding: 30px;
+}
+
+.media-results-title h2 {
+    font-size: 30px;
+}
+
+.media-results-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-results-title {
+    height: 50px;
+    padding: 30px;
+}
+
+.album-results-title h2 {
+    font-size: 30px;
+}
+
+.album-results-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.track-results-title {
+    height: 50px;
+    padding: 30px;
+}
+
+.track-results-title h2 {
+    font-size: 30px;
+}
+
+.track-results-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

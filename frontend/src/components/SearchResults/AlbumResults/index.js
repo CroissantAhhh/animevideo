@@ -14,10 +14,17 @@ function AlbumResults({ query }) {
 
     return (
         <div className="albums-results">
-            <h2>Albums</h2>
-            {albumsArray.map(album => {
-                return <AlbumResult album={album} key={album.id}></AlbumResult>
-            })}
+            <div className="album-results-title">
+                <h2 className="album-results-header">Albums:</h2>
+            </div>
+            <div className="album-results-content">
+                {albumsArray.length > 0 && albumsArray.map(album => {
+                    return <AlbumResult album={album} key={album.id}></AlbumResult>
+                })}
+                {albumsArray.length === 0 &&
+                    <h3>No results found.</h3>
+                }
+            </div>
         </div>
     )
 }

@@ -14,10 +14,17 @@ function TrackResults({ query }) {
 
     return (
         <div className="track-results">
-            <h2>Tracks</h2>
-            {tracksArray.map(track => {
-                return <TrackResult track={track} key={track.id}></TrackResult>
-            })}
+            <div className="track-results-title">
+                <h2 className="track-results-header">Tracks</h2>
+            </div>
+            <div className="track-results-content">
+                {tracksArray.length > 0 && tracksArray.map(track => {
+                    return <TrackResult track={track} key={track.id}></TrackResult>
+                })}
+                {tracksArray.length === 0 &&
+                    <h3>No results found.</h3>
+                }
+            </div>
         </div>
     )
 }

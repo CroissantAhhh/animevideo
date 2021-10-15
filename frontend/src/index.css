@@ -74,6 +74,12 @@ a:hover {
     color: white;
 }
 
+.track-section-art-play {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 30px;
+}
 button.play-track {
     border: 2px solid white;
     border-radius: 30px;

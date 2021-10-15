@@ -13,17 +13,19 @@ const TrackDetails = ({ track }) => {
                 <h2 className="ts-artist">{track.album.artist}</h2>
                 <Link className="ts-album-link" to={`/${process(track.medium.name)}/albums/${process(track.album.name)}`}>{track.album.name}</Link>
             </div>
-            <img src={track.trackImageURL} alt="track artwork" height="160px" width="160px"/>
-            <button className="play-track" value={track.fileURL} onClick={(e) => {
-                setCurrentSong({
-                    fileURL: e.target.value,
-                    trackImageURL: track.trackImageURL,
-                    name: track.name,
-                    media: track.medium.name,
-                    artist: track.album.artist,
-                    album: track.album.name
-                })
-            }}>Play</button>
+            <div className="track-section-art-play">
+                <img src={track.trackImageURL} alt="track artwork" height="160px" width="160px"/>
+                <button className="play-track" value={track.fileURL} onClick={(e) => {
+                    setCurrentSong({
+                        fileURL: e.target.value,
+                        trackImageURL: track.trackImageURL,
+                        name: track.name,
+                        media: track.medium.name,
+                        artist: track.album.artist,
+                        album: track.album.name
+                    })
+                }}>Play</button>
+            </div>
         </div>
     );
 };

@@ -51,7 +51,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: left;
-    width: 70%;
+    width: 80%;
 }
 
 .track-section-info-links > * {

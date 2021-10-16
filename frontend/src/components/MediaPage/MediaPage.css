@@ -1,0 +1,111 @@
+.media-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.media-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgb(36, 36, 36);
+    border-radius: 30px;
+    margin: 20px;
+    height: 460px;
+}
+
+.media-title {
+    background-color: rgb(1, 166, 196);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+}
+
+.media-title h2 {
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 60px;
+}
+
+.media-text-details {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+}
+
+.media-text-details a {
+    margin-top: 50px;
+    align-self: baseline;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(1, 166, 196);
+    text-decoration: none;
+}
+
+.media-text-details p {
+    color: white;
+    font-size: 30px;
+}
+
+.media-banner {
+    margin-right: 30px;
+}
+
+.upload-album-button {
+    align-self: flex-end;
+    width: 200px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.albums-section-title {
+    height: 50px;
+    padding: 30px;
+}
+
+.albums-section-title h2 {
+    font-size: 30px;
+}
+
+.albums-listing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-section {
+    width: 90%;
+    height: 200px;
+    border-radius: 30px;
+    background-color: rgb(36, 36, 36);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+    margin: 20px 0px;
+}
+
+.album-section a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.album-section h3 {
+    margin-top: 20px;
+    color: white;
+}
+
+.album-text-section a:hover {
+    color: rgb(1, 166, 196);
+    text-decoration: none;
+}

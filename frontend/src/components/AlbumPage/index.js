@@ -5,6 +5,7 @@ import { loadTargetAlbum } from "../../store/albums";
 import { loadTracksByAlbum } from "../../store/tracks"
 import TracksSection from "./TracksSection";
 import TrackUploadModal from "../UploadModals/TrackUploadModal";
+import "./AlbumPage.css";
 
 function AlbumPage() {
     const dispatch = useDispatch();
@@ -25,12 +26,14 @@ function AlbumPage() {
     return (
         <div className="album-page">
             <div className="album-details">
-                <h1>{targetAlbum?.name}</h1>
-                <img src={targetAlbum?.albumImageURL} height="200px" width="200px" alt="album artwork" />
-                <Link to={`/${mediumName}`}></Link>
-                <h2>{targetAlbum?.artist}</h2>
+                <div className="album-text-details">
+                    <h1>{targetAlbum?.name}</h1>
+                    <h2>{targetAlbum?.artist}</h2>
+                    <Link to={`/${mediumName}`}>{targetAlbum?.medium.name}</Link>
+                </div>
+                <img className="album-image-details" src={targetAlbum?.albumImageURL} height="260px" width="260px" alt="album artwork" />
             </div>
-            <TrackUploadModal album={targetAlbum}></TrackUploadModal>
+            <TrackUploadModal className="upload-track-button" album={targetAlbum}></TrackUploadModal>
             <TracksSection tracks={tracks}></TracksSection>
         </div>
     )

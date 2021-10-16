@@ -4,6 +4,7 @@ const { URLify } = require("../utils/helpers");
 
 async function listByMedia(mediumId) {
     return await Album.findAll({
+        include: ["medium"],
         where: {
             mediumId
         }

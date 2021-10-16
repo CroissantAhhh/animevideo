@@ -5,6 +5,7 @@ import { loadTargetMedia } from "../../store/media";
 import { loadAlbumsByMedia } from "../../store/albums";
 import AlbumsSection from "./AlbumsSection";
 import AlbumUploadModal from "../UploadModals/AlbumUploadModal";
+import "./MediaPage.css";
 
 function MediaPage() {
     const dispatch = useDispatch();
@@ -24,13 +25,17 @@ function MediaPage() {
 
     return (
         <div className="media-page">
-            <div className="media-details">
-                <h2>{targetMedia?.name}</h2>
-                <img src={targetMedia?.bannerURL} height="200px" width="200px" alt="media banner"/>
-                <a href={targetMedia?.infoLink}>Info Link</a>
-                <p>{targetMedia?.description}</p>
+            <div className="media-title">
+                    <h2>{targetMedia?.name}</h2>
             </div>
-            <AlbumUploadModal medium={targetMedia}></AlbumUploadModal>
+            <div className="media-details">
+                <div className="media-text-details">
+                    <p>{targetMedia?.description}</p>
+                    <a href={targetMedia?.infoLink}>Info Link</a>
+                </div>
+                <img className="media-banner" src={targetMedia?.bannerURL} height="400px" alt="media banner"/>
+            </div>
+            <AlbumUploadModal className="upload-album-button" medium={targetMedia}></AlbumUploadModal>
             <AlbumsSection albums={albums}></AlbumsSection>
         </div>
     )

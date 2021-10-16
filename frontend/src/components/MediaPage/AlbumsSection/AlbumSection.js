@@ -6,9 +6,11 @@ function AlbumSection({ album }) {
     const { mediumName } = useParams();
     return (
         <div className="album-section">
-            <Link to={`/${mediumName}/albums/${process(album.name)}`}>{album.name}</Link>
-            <img src={album.albumImageURL} height="200px" width="200px" alt="album artwork"></img>
-            <h3>{album.artist}</h3>
+            <div className="album-text-section">
+                <Link to={`/${mediumName}/albums/${process(album.name)}`}>{album.name}</Link>
+                <h3>{album.artist}</h3>
+            </div>
+            <img src={album.albumImageURL} height="140px" width="140px" alt="album artwork"></img>
         </div>
     )
 }

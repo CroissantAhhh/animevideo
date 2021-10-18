@@ -1,0 +1,10 @@
+.delete-confirmation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-confirmation h2 {
+    font-size: 20px;
+}

@@ -15,7 +15,6 @@ function EditCommentModal({ comment }) {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditCommentForm comment={comment}></EditCommentForm>
-                    <button className="close-modal" onClick={() => setShowModal(false)}>Cancel</button>
                 </Modal>
             )}
         </>

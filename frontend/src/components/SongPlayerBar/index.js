@@ -8,7 +8,6 @@ function SongPlayerBar() {
 
     return (
         <div className="song-player-bar">
-            <AudioPlayer autoPlay src={currentSong.fileURL}></AudioPlayer>
             <div className="song-info">
                 <img src={currentSong.trackImageURL} alt="track artwork" height="100px" width="100px"></img>
                 <div className="song-text-info">
@@ -16,7 +15,8 @@ function SongPlayerBar() {
                     <h2 className="song-text-media">{currentSong.media}</h2>
                 </div>
             </div>
-
+            <AudioPlayer autoPlay src={currentSong.fileURL}></AudioPlayer>
+            <div className="song-player-bar-padding"></div>
         </div>
     );
 };

@@ -23,6 +23,7 @@ textarea::selection {
     margin-bottom: 100px;
     margin-left: 200px;
     margin-right: 200px;
+    padding-bottom: 10px;
 }
 
 button {

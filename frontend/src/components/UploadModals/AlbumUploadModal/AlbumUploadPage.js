@@ -61,7 +61,7 @@ function AlbumUploadPage({ medium }) {
                 <input id='album-albumImageURL' type="text" value={albumImageURL} onChange={(e) => setAlbumImageURL(e.target.value)}></input>
                 <label htmlFor='album-artist'>Album Artist:</label>
                 <input id='album-artist' type="text" value={artist} onChange={(e) => setArtist(e.target.value)}></input>
-                <button className="album-upload-button" type="submit">Add Media</button>
+                <button className="album-upload-button" type="submit">Add Album</button>
             </form>
         </div>
     )

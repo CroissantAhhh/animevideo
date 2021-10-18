@@ -29,7 +29,7 @@ function AlbumPage() {
                 <div className="album-text-details">
                     <h1>{targetAlbum?.name}</h1>
                     <h2>{targetAlbum?.artist}</h2>
-                    <Link to={`/${mediumName}`}>{targetAlbum?.medium.name}</Link>
+                    <Link to={`/${mediumName}`}>{targetAlbum?.medium?.name}</Link>
                 </div>
                 <img className="album-image-details" src={targetAlbum?.albumImageURL} height="260px" width="260px" alt="album artwork" />
             </div>

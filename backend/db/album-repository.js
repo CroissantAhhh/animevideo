@@ -33,7 +33,9 @@ async function search(query) {
 };
 
 async function create(details) {
-    const album = await Album.create(details);
+    const album = await Album.create(details, {
+        include: ["medium"]
+    });
     return album;
 };
 

@@ -34,6 +34,10 @@
     margin: 10px 0px;
 }
 
+.album-text-details a:hover {
+    color: rgb(1, 166, 196);
+}
+
 .album-text-details h2 {
     color: white;
     font-size: 30px;
@@ -44,7 +48,7 @@
     margin-right: 20px;
 }
 
-.upload-nav-button {
+.upload-track-button {
     align-self: flex-end;
     width: 200px;
     margin-right: 20px;
@@ -58,4 +62,5 @@
 
 .tracks-section-title h2 {
     font-size: 30px;
+    color: white;
 }

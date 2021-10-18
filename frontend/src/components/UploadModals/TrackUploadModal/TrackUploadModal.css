@@ -1,4 +1,10 @@
-.signup-form {
+.track-upload {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.track-upload-form {
     height: 80%;
     display: flex;
     justify-content: space-between;
@@ -6,6 +12,6 @@
     align-items: center;
 }
 
-.signup-form h2 {
+.track-upload-form h2 {
     font-size: 20px;
 }

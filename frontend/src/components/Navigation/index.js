@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LoginFormModal from '../LoginFormModal';
-import { logoutSession } from '../../store/session';
+import { loginSession, logoutSession } from '../../store/session';
 import { storeSearch } from '../../store/search';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
@@ -14,13 +14,16 @@ function Navigation({ isLoaded }){
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState('');
 
+  function loginDemo() {
+    dispatch(loginSession({credential: "demo@user.io", password: "password"}));
+  }
   let sessionLinks;
 
   if (sessionUser) {
     sessionLinks = (
       <>
         <div className="username-display">
-          <h2 style={{fontSize: "20px", color: "white"}}>{sessionUser.username}</h2>
+          <h2>{sessionUser.username}</h2>
         </div>
         <MediaUploadModal></MediaUploadModal>
         <button
@@ -32,6 +35,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
+        <button onClick={loginDemo}>Demo User</button>
         <SignupFormModal />
       </>
     );

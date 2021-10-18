@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addTrack } from "../../../store/tracks"
 import { process } from "../../../utils/process";
+import "./TrackUploadModal.css";
 
 function TrackUploadPage({ album }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -52,12 +53,12 @@ function TrackUploadPage({ album }) {
 
     return (
         <div className="track-upload">
-            <h2>Track Upload Page</h2>
             <form className="track-upload-form" onSubmit={onSubmit}>
+                <h2>Track Upload Page</h2>
                 {validationErrors.length > 0 && (
                     <div>
                         The following errors were found:
-                        <ul>
+                        <ul style={{display: validationErrors.length ? "inline-block" : "none"}}>
                             {validationErrors.map(error => <li key={error}>{error}</li>)}
                         </ul>
                     </div>

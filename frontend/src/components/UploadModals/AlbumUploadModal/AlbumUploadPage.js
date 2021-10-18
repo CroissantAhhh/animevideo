@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addAlbum } from "../../../store/albums"
 import { process } from "../../../utils/process";
+import "./AlbumUploadModal.css";
 
 function AlbumUploadPage({ medium }) {
     const dispatch = useDispatch();
@@ -44,12 +45,12 @@ function AlbumUploadPage({ medium }) {
 
     return (
         <div className="album-upload">
-            <h2>Album Upload Page</h2>
             <form className="album-upload-form" onSubmit={onSubmit}>
+            <h2>Album Upload Page</h2>
                 {validationErrors.length > 0 && (
                     <div>
                         The following errors were found:
-                        <ul>
+                        <ul style={{display: validationErrors.length ? "inline-block" : "none"}}>
                             {validationErrors.map(error => <li key={error}>{error}</li>)}
                         </ul>
                     </div>

@@ -56,11 +56,13 @@ function TrackPage() {
     return (
         <div className="track-page">
             <div className="track-page-section">
-                <h1>{targetTrack?.name}</h1>
-                <img src={targetTrack?.trackImageURL} alt="track artwork" height="100px" width="100px"/>
-                <Link to={`/${process(targetTrack?.medium?.name)}`}>{targetTrack?.medium?.name}</Link>
-                <h2>{targetTrack?.album?.artist}</h2>
-                <Link to={`/${process(targetTrack?.medium?.name)}/albums/${process(targetTrack?.album?.name)}`}>{targetTrack?.album?.name}</Link>
+                <div className="track-page-details-section">
+                    <h1>{targetTrack?.name}</h1>
+                    <Link to={`/${process(targetTrack?.medium?.name)}`}>{targetTrack?.medium?.name}</Link>
+                    <h2>{targetTrack?.album?.artist}</h2>
+                    <Link to={`/${process(targetTrack?.medium?.name)}/albums/${process(targetTrack?.album?.name)}`}>{targetTrack?.album?.name}</Link>
+                </div>
+                <img src={targetTrack?.trackImageURL} alt="track artwork" height="300px" width="300px"/>
                 <button className="play-track" value={targetTrack?.fileURL} onClick={(e) => {
                     setCurrentSong({
                         fileURL: e.target.value,
@@ -73,7 +75,8 @@ function TrackPage() {
                 }}>Play</button>
             </div>
             <div className="comments-section">
-                <form className="add-coment-section" onSubmit={handleAddComment}>
+                {!sessionUser && (<h2 className="comment-not-logged">Log in as a user to comment!</h2>)}
+                {sessionUser && (<form className="add-coment-section" onSubmit={handleAddComment}>
                     {validationErrors.length > 0 && (
                         <div>
                             The following errors were found:
@@ -82,14 +85,16 @@ function TrackPage() {
                             </ul>
                         </div>
                     )}
-                    <label htmlFor="add-coment-form">Add a Comment:</label>
-                    <textarea
-                    id="add-comment-form"
-                    name="add-comment-form"
-                    value={commentBody}
-                    onChange={e => setCommentBody(e.target.value)}></textarea>
-                    <button className="add-comment-button" type="submit">Add Comment</button>
-                </form>
+                    <div className="add-comment-section">
+                        <label htmlFor="add-coment-form">Add a Comment:</label>
+                        <textarea rows="5"
+                        id="add-comment-form"
+                        name="add-comment-form"
+                        value={commentBody}
+                        onChange={e => setCommentBody(e.target.value)}></textarea>
+                        <button className="add-comment-button" type="submit">Add Comment</button>
+                    </div>
+                </form>)}
                 <CommentsSection comments={comments}></CommentsSection>
             </div>
         </div>

@@ -6,7 +6,7 @@ function TrackUploadModal({ album }) {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <button className="upload-nav-button" onClick={() => setShowModal(true)}>Upload Track</button>
+            <button className="upload-track-button" onClick={() => setShowModal(true)}>Upload Track</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <TrackUploadPage album={album}></TrackUploadPage>

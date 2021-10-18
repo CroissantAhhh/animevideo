@@ -62,7 +62,7 @@ header {
 .nav-bar-right {
     display: flex;
     align-items: center;
-    padding-right: 200px;
+    margin-right: 200px;
     width: 30%;
 }
 
@@ -72,11 +72,10 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 }
 
-h2 {
+.username-display h2 {
     display: block;
     color: white;
-    font-size: 2em;
+    font-size: 13px;
 }

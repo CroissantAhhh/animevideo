@@ -1,3 +1,99 @@
 p {
     color: black;
 }
+
+.track-page-section {
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(36, 36, 36);
+}
+
+.track-page-details-section {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding-left: 50px;
+}
+
+.track-page-details-section h1 {
+    color: white;
+    font-size: 60px;
+}
+
+.track-page-details-section a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.track-page-details-section h2 {
+    color: white;
+    font-size: 20px;
+}
+
+.add-comment-section {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.add-comment-section label {
+    align-self: flex-start;
+    margin-left: 10%;
+    font-size: 20px;
+}
+
+.add-comment-section textarea {
+    align-self: center;
+    width: 80%;
+    border: 2px solid black;
+}
+
+.add-comment-section button {
+    width: 30%;
+    align-self: flex-end;
+    margin-right: 10%;
+}
+
+.comments-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.comments-section h2 {
+    color: white;
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+.comment-section {
+    background-color: rgb(36, 36, 36);
+    display: flex;
+    border-radius: 30px;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 85%;
+}
+
+.comment-section-body p {
+    color: white;
+}
+
+.edit-delete-buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+}

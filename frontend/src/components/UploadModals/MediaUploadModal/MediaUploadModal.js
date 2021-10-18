@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addMedia } from "../../../store/media"
 import { process } from "../../../utils/process";
+import "./MediaUploadModal.css";
 
 function MediaUploadPage() {
     const dispatch = useDispatch();
@@ -46,12 +47,12 @@ function MediaUploadPage() {
 
     return (
         <div className="media-upload">
-            <h2>Media Upload Page</h2>
             <form className="media-upload-form" onSubmit={onSubmit}>
+            <h2>Media Upload Page</h2>
                 {validationErrors.length > 0 && (
                     <div>
                         The following errors were found:
-                        <ul>
+                        <ul style={{display: validationErrors.length ? "inline-block" : "none"}}>
                             {validationErrors.map(error => <li key={error}>{error}</li>)}
                         </ul>
                     </div>

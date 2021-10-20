@@ -1,31 +1,25 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchMedia } from "../../../store/media";
 import MediaResult from "./MediaResult";
 
 function MediaResults({ query }) {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [mediaFound, setMediaFound] = useState(false);
     const dispatch = useDispatch();
-    const prevMediaRef = useRef();
 
     useEffect(() => {
-        dispatch(searchMedia(query));
+        dispatch(searchMedia(query)).then(() => setMediaFound(true));
     },[dispatch, query]);
 
     const media = useSelector(state => Object.values(state.media));
-
-    useEffect(() => {
-        prevMediaRef.current = media;
-    });
-    const prevMedia = prevMediaRef.current;
-
     const mediaArray = Object.values(media);
 
     useEffect(() => {
-        if (prevMedia && prevMedia !== media) {
+        if (mediaFound) {
             setIsLoaded(true);
         }
-    }, [media, prevMedia]);
+    }, [mediaFound]);
 
     return (
         <div className="media-results-container">

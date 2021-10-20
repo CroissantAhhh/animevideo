@@ -1,31 +1,25 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchTracks } from "../../../store/tracks";
 import TrackResult from "./TrackResult";
 
 function TrackResults({ query }) {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [tracksFound, setTracksFound] = useState(false);
     const dispatch = useDispatch();
-    const prevTracksRef = useRef();
 
     useEffect(() => {
-        dispatch(searchTracks(query));
+        dispatch(searchTracks(query)).then(() => setTracksFound(true));
     },[dispatch, query]);
 
     const tracks = useSelector(state => Object.values(state.tracks));
-
-    useEffect(() => {
-        prevTracksRef.current = tracks;
-    })
-    const prevTracks = prevTracksRef.current;
-
     const tracksArray = Object.values(tracks);
 
     useEffect(() => {
-        if (prevTracks && prevTracks !== tracks) {
+        if (tracksFound) {
             setIsLoaded(true);
         }
-    }, [tracks, prevTracks]);
+    }, [tracksFound]);
 
     return (
         <div className="track-results-container">

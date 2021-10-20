@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { loadTargetMedia } from "../../store/media";
 import { loadAlbumsByMedia } from "../../store/albums";
 import AlbumsSection from "./AlbumsSection";
@@ -9,42 +9,32 @@ import "./MediaPage.css";
 
 function MediaPage() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [mediaLoaded, setMediaLoaded] = useState(false);
+    const [albumsLoaded, setAlbumsLoaded] = useState(false);
     const dispatch = useDispatch();
     const { mediumId } = useParams();
-    const prevMediaRef = useRef();
-    const prevAlbumsRef = useRef();
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, []);
 
     useEffect(() => {
-        dispatch(loadTargetMedia(mediumId));
+        dispatch(loadTargetMedia(mediumId)).then(() => setMediaLoaded(true));
     }, [dispatch, mediumId]);
 
     const targetMedia = useSelector(state => Object.values(state.media))[0];
 
     useEffect(() => {
-        prevMediaRef.current = targetMedia;
-    });
-    const prevMedia = prevMediaRef.current;
-
-    useEffect(() => {
-        dispatch(loadAlbumsByMedia(targetMedia?.id));
+        dispatch(loadAlbumsByMedia(targetMedia?.id)).then(() => setAlbumsLoaded(true));
     }, [dispatch, targetMedia?.id]);
 
     const albums = useSelector(state => Object.values(state.albums));
 
     useEffect(() => {
-        prevAlbumsRef.current = albums;
-    });
-    const prevAlbums = prevAlbumsRef.current;
-
-    useEffect(() => {
-        if (prevMedia && prevAlbums && prevMedia !== targetMedia && prevAlbums !== albums) {
+        if (mediaLoaded && albumsLoaded) {
             setIsLoaded(true);
         }
-    }, [targetMedia, albums, prevMedia, prevAlbums]);
+    }, [mediaLoaded, albumsLoaded]);
 
     return (
         <div className="media-page-container">

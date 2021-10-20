@@ -6,6 +6,7 @@ import "./TrackList.css";
 
 function TrackList() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [tracksLoaded, setTracksLoaded] = useState(false);
     const dispatch = useDispatch();
     const prevTracksRef = useRef();
 
@@ -23,14 +24,14 @@ function TrackList() {
     }, []);
 
     useEffect(() => {
-        dispatch(loadRandomTracks());
+        dispatch(loadRandomTracks()).then(() => setTracksLoaded(true));
     }, [dispatch]);
 
     useEffect(() => {
-        if (prevTracks && tracks !== prevTracks) {
+        if (tracksLoaded) {
             setIsLoaded(true);
         }
-    }, [tracks, prevTracks]);
+    }, [tracksLoaded]);
 
     return (
         <div className="track-list-container">

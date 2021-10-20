@@ -1,31 +1,26 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchAlbums } from "../../../store/albums";
 import AlbumResult from "./AlbumResult";
 
 function AlbumResults({ query }) {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [albumsFound, setAlbumsFound] = useState(false);
     const dispatch = useDispatch();
-    const prevAlbumsRef = useRef();
 
     useEffect(() => {
-        dispatch(searchAlbums(query));
+        dispatch(searchAlbums(query)).then(() => setAlbumsFound(true));
     },[dispatch, query]);
 
     const albums = useSelector(state => Object.values(state.albums));
 
-    useEffect(() => {
-        prevAlbumsRef.current = albums;
-    });
-    const prevAlbums = prevAlbumsRef.current;
-
     const albumsArray = Object.values(albums);
 
     useEffect(() => {
-        if (prevAlbums && prevAlbums !== albums) {
+        if (albumsFound) {
             setIsLoaded(true);
         }
-    }, [albums, prevAlbums]);
+    }, [albumsFound]);
 
     return (
         <div className="albums-results-container">

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useCurrentSong } from "../../context/currentSongContext";
@@ -10,46 +10,36 @@ import "./TrackPage.css";
 
 function TrackPage() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [trackFound, setTrackFound] = useState(false);
+    const [commentsFound, setCommentsFound] = useState(false);
     const [commentBody, setCommentBody] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
     const { setCurrentSong } = useCurrentSong();
     const dispatch = useDispatch();
     const { trackId } = useParams();
-    const prevTrackRef = useRef();
-    const prevCommentsRef = useRef();
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, []);
 
     useEffect(() => {
-        dispatch(loadTrackById(trackId));
+        dispatch(loadTrackById(trackId)).then(() => setTrackFound(true));
     }, [dispatch, trackId])
 
     const targetTrack = useSelector(state => Object.values(state.tracks))[0];
 
     useEffect(() => {
-        prevTrackRef.current = targetTrack;
-    });
-    const prevTrack = prevTrackRef.current;
-
-    useEffect(() => {
-        dispatch(loadComments(trackId));
+        dispatch(loadComments(trackId)).then(() => setCommentsFound(true));
     }, [dispatch, trackId]);
 
     const comments = useSelector(state => Object.values(state.comments));
 
     useEffect(() => {
-        prevCommentsRef.current = comments;
-    });
-    const prevComments = prevCommentsRef.current;
-
-    useEffect(() => {
-        if (prevTrack && prevComments && prevTrack !== targetTrack && prevComments !== comments) {
+        if (trackFound && commentsFound) {
             setIsLoaded(true);
         }
-    }, [targetTrack, comments, prevComments, prevTrack]);
+    }, [trackFound, commentsFound]);
 
     const validate = () => {
         const errors = [];

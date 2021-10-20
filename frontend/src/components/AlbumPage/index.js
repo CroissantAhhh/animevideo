@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { loadTargetAlbum } from "../../store/albums";
 import { loadTracksByAlbum } from "../../store/tracks"
@@ -9,42 +9,34 @@ import "./AlbumPage.css";
 
 function AlbumPage() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [albumFound, setAlbumFound] = useState(false);
+    const [tracksFound, setTracksFound] = useState(false);
     const dispatch = useDispatch();
     const { albumId } = useParams();
-    const prevAlbumRef = useRef();
-    const prevTracksRef = useRef();
 
     useEffect(() => {
+        console.log("first useEffect");
         window.scrollTo(0, 0)
-    }, []);
+    },[]);
 
     useEffect(() => {
-        dispatch(loadTargetAlbum(albumId));
+        dispatch(loadTargetAlbum(albumId)).then(() => setAlbumFound(true));
     }, [dispatch, albumId]);
 
     const targetAlbum = useSelector(state => Object.values(state.albums))[0];
-    useEffect(() => {
-        prevAlbumRef.current = targetAlbum;
-    });
-    const prevAlbum = prevAlbumRef.current;
-    console.log(prevAlbum);
 
     useEffect(() => {
-        dispatch(loadTracksByAlbum(albumId));
+        dispatch(loadTracksByAlbum(albumId)).then(() => setTracksFound(true));
     }, [dispatch, albumId]);
 
     const tracks = useSelector(state => Object.values(state.tracks));
-    useEffect(() => {
-        prevTracksRef.current = tracks;
-    });
-    const prevTracks = prevTracksRef.current;
-    console.log(prevTracks);
 
     useEffect(() => {
-        if (prevAlbum && prevTracks && prevAlbum !== targetAlbum && prevTracks !== tracks) {
+        console.log("sixth useEffect");
+        if (albumFound && tracksFound) {
             setIsLoaded(true);
         }
-    }, [targetAlbum, tracks, prevAlbum, prevTracks]);
+    }, [albumFound, tracksFound]);
 
     return (
         <div className="album-page-container">

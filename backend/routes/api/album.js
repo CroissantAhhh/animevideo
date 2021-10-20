@@ -20,6 +20,16 @@ router.get(
 );
 
 router.get(
+    "/byId/:albumId",
+    asyncHandler(async (req, res) => {
+        const album = await AlbumRepository.getOne(req.params.albumId);
+        return res.json({
+            album
+        });
+    }),
+);
+
+router.get(
     "/search/:mediumName/:albumName",
     asyncHandler(async (req, res) => {
         const mediumName = req.params.mediumName;

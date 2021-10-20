@@ -31,10 +31,10 @@ router.get(
 );
 
 router.get(
-    "/search/:mediumName",
+    "/byId/:mediumId",
     asyncHandler(async (req, res) => {
-        const mediumName = process(req.params.mediumName)
-        const media = await MediaRepository.getTargetMedia(mediumName);
+        const mediumId = process(req.params.mediumId)
+        const media = await MediaRepository.getOne(mediumId);
         return res.json({
             media
         });

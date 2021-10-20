@@ -10,7 +10,12 @@ module.exports = {
       { name: "My Hero Academia Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1633812164/My%20Hero%20Academia/Season%201%20Soundtrack/Cover_eum1j5.jpg", artist: "Yuki Hayashi", mediumId: 2},
       { name: "My Hero Academia 2nd Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1633812748/My%20Hero%20Academia/Season%202%20Soundtrack/Cover_uftllj.jpg", artist: "Yuki Hayashi", mediumId: 2},
       { name: "Fire Emblem Three Houses Complete Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1633817292/Fire%20Emblem:%20Three%20Houses/Cover_edf4kd.jpg", artist: "Yuki Hayashi", mediumId: 3},
-      { name: "Danganronpa Trigger Happy Havoc Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1633813259/Danganronpa/Trigger%20Happy%20Havoc/Cover_lzzx4r.jpg", artist: "Yuki Hayashi", mediumId: 4}
+      { name: "Danganronpa Trigger Happy Havoc Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1633813259/Danganronpa/Trigger%20Happy%20Havoc/Cover_lzzx4r.jpg", artist: "Yuki Hayashi", mediumId: 4},
+      { name: "Haikyu!! Karasuno High School VS Shiratorizawa Academy Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634656717/Haikyu%21%21/Karasuno%20vs%20Shiratorizawa%20OST/Cover_mhbrex.jpg", artist: "Yuki Hayashi", mediumId: 1},
+      { name: "Haikyu!! To The Top Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634657108/Haikyu%21%21/To%20the%20Top%21%20OST/Cover_egrsmg.jpg", artist: "Yuki Hayashi", mediumId: 1},
+      { name: "Phoenix Wright: Ace Attorney Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634657896/Ace%20Attorney/Game%201/Disc_1_Front_vtn3d7.jpg", artist: "Masakazu Sugimori", mediumId: 5},
+      { name: "Phoenix Wright: Ace Attorney - Justice for All - Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658075/Ace%20Attorney/Game%202/Disc_2_Front_cva0lf.jpg", artist: "Masakazu Sugimori", mediumId: 5},
+      { name: "Phoenix Wright: Ace Attorney - Trials and Tribulations - Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658320/Ace%20Attorney/Game%203/Disc_3_Front_sqefry.jpg", artist: "Noriyuki Iwadare", mediumId: 5},
     ], {});
   },
 

@@ -6,6 +6,10 @@ async function list() {
     return await Media.findAll();
 };
 
+async function getOne(id) {
+    return await Media.findByPk(id);
+}
+
 async function search(query) {
     return await Media.findAll({
         where: {
@@ -52,6 +56,7 @@ async function del(id) {
 
 module.exports = {
     list,
+    getOne,
     search,
     getTargetMedia,
     create,

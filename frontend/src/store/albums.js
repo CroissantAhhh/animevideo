@@ -41,12 +41,12 @@ export const loadAlbumsByMedia = (mediumId) => async dispatch => {
     };
 };
 
-export const loadTargetAlbum = (mediumName, albumName) => async dispatch => {
-    const response = await fetch(`/api/albums/search/${mediumName}/${albumName}`);
+export const loadTargetAlbum = (albumId) => async dispatch => {
+    const response = await fetch(`/api/albums/byId/${albumId}`);
 
     if (response.ok) {
         const albums = await response.json();
-        dispatch(load(albums["album"]));
+        dispatch(load([albums["album"]]));
     };
 };
 

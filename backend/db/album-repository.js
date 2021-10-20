@@ -11,6 +11,12 @@ async function listByMedia(mediumId) {
     });
 };
 
+async function getOne(id) {
+    return await Album.findByPk(id, {
+        include: ["medium"]
+    })
+}
+
 async function getTargetAlbum(mediumName, albumName) {
     const searched = await Album.findAll({
         include: ["medium"],
@@ -60,6 +66,7 @@ async function del(id) {
 
 module.exports = {
     listByMedia,
+    getOne,
     getTargetAlbum,
     search,
     create,

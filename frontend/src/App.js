@@ -31,13 +31,13 @@ function App() {
               <Route path="/search">
                 <SearchResults></SearchResults>
               </Route>
-              <Route exact path="/:mediumName">
+              <Route path="/media/:mediumId">
                 <MediaPage></MediaPage>
               </Route>
-              <Route path="/:mediumName/albums/:albumName">
+              <Route path="/albums/:albumId">
                 <AlbumPage></AlbumPage>
               </Route>
-              <Route path="/:mediumName/tracks/:trackName">
+              <Route path="/tracks/:trackId">
                 <TrackPage></TrackPage>
               </Route>
             </Switch>

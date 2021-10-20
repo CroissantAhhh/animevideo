@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { loadTargetAlbum } from "../../store/albums";
 import { loadTracksByAlbum } from "../../store/tracks"
@@ -8,33 +8,60 @@ import TrackUploadModal from "../UploadModals/TrackUploadModal";
 import "./AlbumPage.css";
 
 function AlbumPage() {
+    const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
-    const { mediumName, albumName } = useParams();
+    const { albumId } = useParams();
+    const prevAlbumRef = useRef();
+    const prevTracksRef = useRef();
 
     useEffect(() => {
-        dispatch(loadTargetAlbum(mediumName, albumName));
-    }, [dispatch, mediumName, albumName]);
+        window.scrollTo(0, 0)
+    }, []);
+
+    useEffect(() => {
+        dispatch(loadTargetAlbum(albumId));
+    }, [dispatch, albumId]);
 
     const targetAlbum = useSelector(state => Object.values(state.albums))[0];
+    useEffect(() => {
+        prevAlbumRef.current = targetAlbum;
+    });
+    const prevAlbum = prevAlbumRef.current;
+    console.log(prevAlbum);
 
     useEffect(() => {
-        dispatch(loadTracksByAlbum(targetAlbum?.id));
-    }, [dispatch, targetAlbum?.id]);
+        dispatch(loadTracksByAlbum(albumId));
+    }, [dispatch, albumId]);
 
     const tracks = useSelector(state => Object.values(state.tracks));
+    useEffect(() => {
+        prevTracksRef.current = tracks;
+    });
+    const prevTracks = prevTracksRef.current;
+    console.log(prevTracks);
+
+    useEffect(() => {
+        if (prevAlbum && prevTracks && prevAlbum !== targetAlbum && prevTracks !== tracks) {
+            setIsLoaded(true);
+        }
+    }, [targetAlbum, tracks, prevAlbum, prevTracks]);
 
     return (
-        <div className="album-page">
-            <div className="album-details">
-                <div className="album-text-details">
-                    <h1>{targetAlbum?.name}</h1>
-                    <h2>{targetAlbum?.artist}</h2>
-                    <Link to={`/${mediumName}`}>{targetAlbum?.medium?.name}</Link>
+        <div className="album-page-container">
+            {isLoaded &&
+                <div className="album-page">
+                    <div className="album-details">
+                        <div className="album-text-details">
+                            <h1>{targetAlbum?.name}</h1>
+                            <h2>{targetAlbum?.artist}</h2>
+                            <Link to={`/media/${targetAlbum?.medium?.id}`}>{targetAlbum?.medium?.name}</Link>
+                        </div>
+                        <img className="album-image-details" src={targetAlbum?.albumImageURL} height="260px" width="260px" alt="album artwork" />
+                    </div>
+                    <TrackUploadModal className="upload-track-button" album={targetAlbum}></TrackUploadModal>
+                    <TracksSection tracks={tracks}></TracksSection>
                 </div>
-                <img className="album-image-details" src={targetAlbum?.albumImageURL} height="260px" width="260px" alt="album artwork" />
-            </div>
-            <TrackUploadModal className="upload-track-button" album={targetAlbum}></TrackUploadModal>
-            <TracksSection tracks={tracks}></TracksSection>
+            }
         </div>
     )
 }

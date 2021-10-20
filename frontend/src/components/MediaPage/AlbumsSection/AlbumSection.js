@@ -1,13 +1,10 @@
-import { Link, useParams } from "react-router-dom";
-import { process } from "../../../utils/process";
-
+import { Link } from "react-router-dom";
 
 function AlbumSection({ album }) {
-    const { mediumName } = useParams();
     return (
         <div className="album-section">
             <div className="album-text-section">
-                <Link to={`/${mediumName}/albums/${process(album.name)}`}>{album.name}</Link>
+                <Link to={`/albums/${album.id}`}>{album.name}</Link>
                 <h3>{album.artist}</h3>
             </div>
             <img src={album.albumImageURL} height="140px" width="140px" alt="album artwork"></img>

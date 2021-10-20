@@ -32,12 +32,12 @@ export const addMedia = (formData) => async dispatch => {
     }
 };
 
-export const loadTargetMedia = (mediumName) => async dispatch => {
-    const response = await fetch(`/api/media/search/${mediumName}`);
+export const loadTargetMedia = (mediumId) => async dispatch => {
+    const response = await fetch(`/api/media/byId/${mediumId}`);
 
     if (response.ok) {
         const media = await response.json();
-        dispatch(load(media["media"]));
+        dispatch(load([media["media"]]));
     };
 };
 

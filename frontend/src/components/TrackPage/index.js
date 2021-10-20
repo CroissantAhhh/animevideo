@@ -1,33 +1,55 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useCurrentSong } from "../../context/currentSongContext";
 import { loadComments, addComment } from "../../store/comments";
-import { loadTargetTrack } from "../../store/tracks";
-import { process } from "../../utils/process";
+import { loadTrackById } from "../../store/tracks";
 import CommentsSection from "./CommentsSection";
 import "./TrackPage.css";
 
 function TrackPage() {
+    const [isLoaded, setIsLoaded] = useState(false);
     const [commentBody, setCommentBody] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
     const { setCurrentSong } = useCurrentSong();
     const dispatch = useDispatch();
-    const { mediumName, trackName } = useParams();
+    const { trackId } = useParams();
+    const prevTrackRef = useRef();
+    const prevCommentsRef = useRef();
 
     useEffect(() => {
-        dispatch(loadTargetTrack(mediumName, trackName));
-    }, [dispatch, mediumName, trackName])
+        window.scrollTo(0, 0)
+    }, []);
+
+    useEffect(() => {
+        dispatch(loadTrackById(trackId));
+    }, [dispatch, trackId])
 
     const targetTrack = useSelector(state => Object.values(state.tracks))[0];
 
     useEffect(() => {
-        dispatch(loadComments(targetTrack?.id));
-    }, [dispatch, targetTrack?.id]);
+        prevTrackRef.current = targetTrack;
+    });
+    const prevTrack = prevTrackRef.current;
+
+    useEffect(() => {
+        dispatch(loadComments(trackId));
+    }, [dispatch, trackId]);
 
     const comments = useSelector(state => Object.values(state.comments));
+
+    useEffect(() => {
+        prevCommentsRef.current = comments;
+    });
+    const prevComments = prevCommentsRef.current;
+
+    useEffect(() => {
+        if (prevTrack && prevComments && prevTrack !== targetTrack && prevComments !== comments) {
+            setIsLoaded(true);
+        }
+    }, [targetTrack, comments, prevComments, prevTrack]);
 
     const validate = () => {
         const errors = [];
@@ -45,7 +67,7 @@ function TrackPage() {
         const payload = {
             body: commentBody,
             userId: sessionUser.id,
-            trackId: targetTrack?.id
+            trackId: trackId
         };
 
         dispatch(addComment(payload));
@@ -54,49 +76,53 @@ function TrackPage() {
     };
 
     return (
-        <div className="track-page">
-            <div className="track-page-section">
-                <div className="track-page-details-section">
-                    <h1>{targetTrack?.name}</h1>
-                    <Link to={`/${process(targetTrack?.medium?.name)}`}>{targetTrack?.medium?.name}</Link>
-                    <h2>{targetTrack?.album?.artist}</h2>
-                    <Link to={`/${process(targetTrack?.medium?.name)}/albums/${process(targetTrack?.album?.name)}`}>{targetTrack?.album?.name}</Link>
-                </div>
-                <img src={targetTrack?.trackImageURL} alt="track artwork" height="300px" width="300px"/>
-                <button className="play-track" value={targetTrack?.fileURL} onClick={(e) => {
-                    setCurrentSong({
-                        fileURL: e.target.value,
-                        trackImageURL: targetTrack?.trackImageURL,
-                        name: targetTrack?.name,
-                        media: targetTrack?.medium?.name,
-                        artist: targetTrack?.album?.artist,
-                        album: targetTrack?.album?.name
-                    })
-                }}>Play</button>
-            </div>
-            <div className="comments-section">
-                {!sessionUser && (<h2 className="comment-not-logged">Log in as a user to comment!</h2>)}
-                {sessionUser && (<form className="add-coment-section" onSubmit={handleAddComment}>
-                    {validationErrors.length > 0 && (
-                        <div>
-                            The following errors were found:
-                            <ul>
-                                {validationErrors.map(error => <li key={error}>{error}</li>)}
-                            </ul>
+        <div className="track-page-container">
+            {isLoaded &&
+                <div className="track-page">
+                    <div className="track-page-section">
+                        <div className="track-page-details-section">
+                            <h1>{targetTrack?.name}</h1>
+                            <Link to={`/media/${targetTrack?.medium?.id}`}>{targetTrack?.medium?.name}</Link>
+                            <h2>{targetTrack?.album?.artist}</h2>
+                            <Link to={`/albums/${targetTrack?.album?.id}`}>{targetTrack?.album?.name}</Link>
                         </div>
-                    )}
-                    <div className="add-comment-section">
-                        <label htmlFor="add-coment-form">Add a Comment:</label>
-                        <textarea rows="5"
-                        id="add-comment-form"
-                        name="add-comment-form"
-                        value={commentBody}
-                        onChange={e => setCommentBody(e.target.value)}></textarea>
-                        <button className="add-comment-button" type="submit">Add Comment</button>
+                        <img src={targetTrack?.trackImageURL} alt="track artwork" height="300px" width="300px"/>
+                        <button className="play-track" value={targetTrack?.fileURL} onClick={(e) => {
+                            setCurrentSong({
+                                fileURL: e.target.value,
+                                trackImageURL: targetTrack?.trackImageURL,
+                                name: targetTrack?.name,
+                                media: targetTrack?.medium?.name,
+                                artist: targetTrack?.album?.artist,
+                                album: targetTrack?.album?.name
+                            })
+                        }}>Play</button>
                     </div>
-                </form>)}
-                <CommentsSection comments={comments}></CommentsSection>
-            </div>
+                    <div className="comments-section">
+                        {!sessionUser && (<h2 className="comment-not-logged">Log in as a user to comment!</h2>)}
+                        {sessionUser && (<form className="add-coment-section" onSubmit={handleAddComment}>
+                            {validationErrors.length > 0 && (
+                                <div>
+                                    The following errors were found:
+                                    <ul>
+                                        {validationErrors.map(error => <li key={error}>{error}</li>)}
+                                    </ul>
+                                </div>
+                            )}
+                            <div className="add-comment-section">
+                                <label htmlFor="add-coment-form">Add a Comment:</label>
+                                <textarea rows="5"
+                                id="add-comment-form"
+                                name="add-comment-form"
+                                value={commentBody}
+                                onChange={e => setCommentBody(e.target.value)}></textarea>
+                                <button className="add-comment-button" type="submit">Add Comment</button>
+                            </div>
+                        </form>)}
+                        <CommentsSection comments={comments}></CommentsSection>
+                    </div>
+                </div>
+            }
         </div>
     )
 }

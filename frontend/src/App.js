@@ -5,7 +5,7 @@ import { retainSession } from "./store/session";
 import Navigation from "./components/Navigation";
 import TrackList from "./components/TrackList";
 import SearchResults from "./components/SearchResults";
-import CurrentSongProvider from "./context/currentSongContext";
+import CurrentSongsProvider from "./context/currentSongsContext";
 import SongPlayerBar from "./components/SongPlayerBar";
 import TrackPage from "./components/TrackPage";
 import MediaPage from "./components/MediaPage";
@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <CurrentSongProvider>
+      <CurrentSongsProvider>
         <div className="main-page-content">
           {isLoaded && (
             <Switch>
@@ -44,7 +44,7 @@ function App() {
           )}
         </div>
         <SongPlayerBar></SongPlayerBar>
-      </CurrentSongProvider>
+      </CurrentSongsProvider>
     </>
   );
 }

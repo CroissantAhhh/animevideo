@@ -1,8 +1,30 @@
-import { useCurrentSong } from "../../context/currentSongContext";
+import { useCurrentSongs } from "../../context/currentSongsContext";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 const TrackDetails = ({ track }) => {
-    const { setCurrentSong } = useCurrentSong();
+    const { currentSongs, setCurrentSongs } = useCurrentSongs();
+    const tracks = useSelector(state => Object.values(state.tracks));
+
+    function findPosition() {
+        let index = 0;
+        for (let singleTrack of tracks) {
+            if (track === singleTrack) {
+                return index;
+            };
+            index++;
+        };
+    };
+
+    function enqueueSongs() {
+        console.log(tracks);
+        setCurrentSongs({ songList: tracks, currentPosition: findPosition()});
+    };
+
+    useEffect(() => {
+        console.log(currentSongs);
+    }, [currentSongs])
 
     return (
         <div className="track-section">
@@ -14,16 +36,8 @@ const TrackDetails = ({ track }) => {
             </div>
             <div className="track-section-art-play">
                 <img src={track.trackImageURL} alt="track artwork" height="160px" width="160px"/>
-                <button className="play-track" value={track.fileURL} onClick={(e) => {
-                    setCurrentSong({
-                        fileURL: e.target.value,
-                        trackImageURL: track.trackImageURL,
-                        name: track.name,
-                        media: track.medium.name,
-                        artist: track.album.artist,
-                        album: track.album.name
-                    })
-                }}>Play</button>
+                <button className="play-track"  onClick={enqueueSongs}
+                >Play</button>
             </div>
         </div>
     );

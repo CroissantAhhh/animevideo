@@ -7,6 +7,9 @@ const hs3 = require('../../utils/trackData/haikyuData/haikyuS3.js');
 const hs4 = require('../../utils/trackData/haikyuData/haikyuS4.js');
 const mh1 = require('../../utils/trackData/myheroData/myheroS1.js');
 const mh2 = require('../../utils/trackData/myheroData/myheroS2.js');
+const mh3 = require('../../utils/trackData/myheroData/myheroS3.js');
+const mh4 = require('../../utils/trackData/myheroData/myheroS4.js');
+const mh5 = require('../../utils/trackData/myheroData/myheroS5.js');
 const fe3h = require('../../utils/trackData/feData.js');
 const dgrn = require('../../utils/trackData/danganData.js');
 const PW1 = require('../../utils/trackData/aaPWData/PW1.js');
@@ -25,6 +28,9 @@ module.exports = {
       ...hs4,
       ...mh1,
       ...mh2,
+      ...mh3,
+      ...mh4,
+      ...mh5,
       ...fe3h,
       ...dgrn,
       ...PW1,

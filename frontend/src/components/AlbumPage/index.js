@@ -15,7 +15,6 @@ function AlbumPage() {
     const { albumId } = useParams();
 
     useEffect(() => {
-        console.log("first useEffect");
         window.scrollTo(0, 0)
     },[]);
 
@@ -32,7 +31,6 @@ function AlbumPage() {
     const tracks = useSelector(state => Object.values(state.tracks));
 
     useEffect(() => {
-        console.log("sixth useEffect");
         if (albumFound && tracksFound) {
             setIsLoaded(true);
         }

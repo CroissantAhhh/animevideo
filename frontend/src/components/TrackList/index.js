@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import TrackDetails from "./TrackDetails";
 import { loadRandomTracks } from "../../store/tracks";
 import "./TrackList.css";
@@ -8,16 +8,8 @@ function TrackList() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [tracksLoaded, setTracksLoaded] = useState(false);
     const dispatch = useDispatch();
-    const prevTracksRef = useRef();
 
     const tracks = useSelector(state => Object.values(state.tracks));
-    console.log(tracks)
-
-    useEffect(() => {
-        prevTracksRef.current = tracks;
-    });
-    const prevTracks = prevTracksRef.current;
-    console.log(prevTracks);
 
     useEffect(() => {
         window.scrollTo(0, 0);

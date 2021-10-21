@@ -148,6 +148,10 @@ div.rhap_time.rhap_total-time {
     border: none;
 }
 
+.rhap_skip-button {
+    font-size: 35px;
+}
+
 .rhap_volume-container {
     width: 150px;
     display: flex;

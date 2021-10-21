@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useCurrentSong } from "../../context/currentSongContext";
+import { useCurrentSongs } from "../../context/currentSongsContext";
 import { loadComments, addComment } from "../../store/comments";
 import { loadTrackById } from "../../store/tracks";
 import CommentsSection from "./CommentsSection";
@@ -15,7 +15,7 @@ function TrackPage() {
     const [commentBody, setCommentBody] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
-    const { setCurrentSong } = useCurrentSong();
+    const { setCurrentSongs } = useCurrentSongs();
     const dispatch = useDispatch();
     const { trackId } = useParams();
 
@@ -77,16 +77,8 @@ function TrackPage() {
                             <Link to={`/albums/${targetTrack?.album?.id}`}>{targetTrack?.album?.name}</Link>
                         </div>
                         <img src={targetTrack?.trackImageURL} alt="track artwork" height="300px" width="300px"/>
-                        <button className="play-track" value={targetTrack?.fileURL} onClick={(e) => {
-                            setCurrentSong({
-                                fileURL: e.target.value,
-                                trackImageURL: targetTrack?.trackImageURL,
-                                name: targetTrack?.name,
-                                media: targetTrack?.medium?.name,
-                                artist: targetTrack?.album?.artist,
-                                album: targetTrack?.album?.name
-                            })
-                        }}>Play</button>
+                        <button className="play-track" value={targetTrack?.fileURL} onClick={() => setCurrentSongs({ songList: [targetTrack], currentPosition: 0})
+                        }>Play</button>
                     </div>
                     <div className="comments-section">
                         {!sessionUser && (<h2 className="comment-not-logged">Log in as a user to comment!</h2>)}

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useCurrentSong } from "../../../context/currentSongContext";
+import { useCurrentsSong } from "../../../context/currentSongsContext";
 import "./TrackResult.css";
 
 function TrackResult({ track }) {

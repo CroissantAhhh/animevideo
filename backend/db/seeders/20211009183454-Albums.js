@@ -16,6 +16,9 @@ module.exports = {
       { name: "Phoenix Wright: Ace Attorney Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634657896/Ace%20Attorney/Game%201/Disc_1_Front_vtn3d7.jpg", artist: "Masakazu Sugimori", mediumId: 5},
       { name: "Phoenix Wright: Ace Attorney - Justice for All - Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658075/Ace%20Attorney/Game%202/Disc_2_Front_cva0lf.jpg", artist: "Masakazu Sugimori", mediumId: 5},
       { name: "Phoenix Wright: Ace Attorney - Trials and Tribulations - Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658320/Ace%20Attorney/Game%203/Disc_3_Front_sqefry.jpg", artist: "Noriyuki Iwadare", mediumId: 5},
+      { name: "My Hero Academia 3rd Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634660757/My%20Hero%20Academia/Season%203%20Soundtrack/Cover_hk04uo.jpg", artist: "Yuki Hayashi", mediumId: 2},
+      { name: "My Hero Academia 4th Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634661090/My%20Hero%20Academia/Season%204%20Soundtrack/Cover_ja9etg.jpg", artist: "Yuki Hayashi", mediumId: 2},
+      { name: "My Hero Academia 5th Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634838338/My%20Hero%20Academia/Season%205%20Soundtrack/cover_w907yk.jpg", artist: "Yuki Hayashi", mediumId: 2},
     ], {});
   },
 

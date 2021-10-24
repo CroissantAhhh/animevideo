@@ -1,10 +1,9 @@
 import { useCurrentSongs } from "../../context/currentSongsContext";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 const TrackDetails = ({ track }) => {
-    const { currentSongs, setCurrentSongs } = useCurrentSongs();
+    const { injectSongs } = useCurrentSongs();
     const tracks = useSelector(state => Object.values(state.tracks));
 
     function findPosition() {
@@ -17,15 +16,6 @@ const TrackDetails = ({ track }) => {
         };
     };
 
-    function enqueueSongs() {
-        console.log(tracks);
-        setCurrentSongs({ songList: tracks, currentPosition: findPosition()});
-    };
-
-    useEffect(() => {
-        console.log(currentSongs);
-    }, [currentSongs])
-
     return (
         <div className="track-section">
             <div className="track-section-info-links">
@@ -36,7 +26,7 @@ const TrackDetails = ({ track }) => {
             </div>
             <div className="track-section-art-play">
                 <img src={track.trackImageURL} alt="track artwork" height="160px" width="160px"/>
-                <button className="play-track"  onClick={enqueueSongs}
+                <button className="play-track"  onClick={() => injectSongs(tracks, findPosition())}
                 >Play</button>
             </div>
         </div>

@@ -1,3 +1,8 @@
+.track-results-content {
+    display: flex;
+    flex-direction: column;
+}
+
 .track-result-container {
     width: 90%;
     height: 200px;

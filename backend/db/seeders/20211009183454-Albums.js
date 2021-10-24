@@ -19,6 +19,7 @@ module.exports = {
       { name: "My Hero Academia 3rd Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634660757/My%20Hero%20Academia/Season%203%20Soundtrack/Cover_hk04uo.jpg", artist: "Yuki Hayashi", mediumId: 2},
       { name: "My Hero Academia 4th Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634661090/My%20Hero%20Academia/Season%204%20Soundtrack/Cover_ja9etg.jpg", artist: "Yuki Hayashi", mediumId: 2},
       { name: "My Hero Academia 5th Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634838338/My%20Hero%20Academia/Season%205%20Soundtrack/cover_w907yk.jpg", artist: "Yuki Hayashi", mediumId: 2},
+      { name: "Pokemon Sword & Pokemon Shield: Super Music Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634663647/Pokemon/Sword-Shield/Cover_y525tr.png", artist: "Minako Adachi/Go Ichinose", mediumId: 6},
     ], {});
   },
 

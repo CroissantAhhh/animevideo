@@ -74,7 +74,7 @@ h2 {
 }
 
 .rhap_progress-bar {
-    width: 95%;
+    width: 100%;
     height: 10px;
     background-color: grey;
     border-radius: 5px;
@@ -82,7 +82,7 @@ h2 {
 }
 
 .rhap_progress-filled {
-    width: 90%;
+    width: 100%;
     height: 100%;
     background-color: white;
     border-radius: 5px;
@@ -90,13 +90,15 @@ h2 {
     position: absolute;
 }
 
-.rhap_progress-filled:hover {
-    width: 90%;
-    height: 100%;
+.rhap_progress-indicator {
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
     background-color: white;
-    border-radius: 5px;
-    z-index: 1;
     position: absolute;
+    z-index: 2;
+    bottom: -3px;
+    margin-left: -7px;
 }
 
 
@@ -149,7 +151,7 @@ div.rhap_time.rhap_total-time {
 }
 
 .rhap_skip-button {
-    font-size: 35px;
+    font-size: 31px;
 }
 
 .rhap_volume-container {

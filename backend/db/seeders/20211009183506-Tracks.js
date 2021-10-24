@@ -16,6 +16,7 @@ const PW1 = require('../../utils/trackData/aaPWData/PW1.js');
 const PW2 = require('../../utils/trackData/aaPWData/PW2.js');
 const PW3 = require('../../utils/trackData/aaPWData/PW3.js');
 const pokeswsh = require('../../utils/trackData/pokemonData/pokeswsh.js');
+const pokedp = require('../../utils/trackData/pokemonData/pokedp.js');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -38,6 +39,7 @@ module.exports = {
       ...PW2,
       ...PW3,
       ...pokeswsh,
+      ...pokedp,
     ], {});
   },
 

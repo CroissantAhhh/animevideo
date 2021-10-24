@@ -20,6 +20,9 @@ module.exports = {
       { name: "My Hero Academia 4th Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634661090/My%20Hero%20Academia/Season%204%20Soundtrack/Cover_ja9etg.jpg", artist: "Yuki Hayashi", mediumId: 2},
       { name: "My Hero Academia 5th Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634838338/My%20Hero%20Academia/Season%205%20Soundtrack/cover_w907yk.jpg", artist: "Yuki Hayashi", mediumId: 2},
       { name: "Pokemon Sword & Pokemon Shield: Super Music Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634663647/Pokemon/Sword-Shield/Cover_y525tr.png", artist: "Minako Adachi/Go Ichinose", mediumId: 6},
+      { name: "Pokemon Diamond & Pokemon Pearl: Super Music Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634662995/Pokemon/Diamond-Pearl/Cover_ddhg7n.png", artist: "Junichi Masuda/Go Ichinose", mediumId: 6},
+      { name: "Pokemon Diamond & Pokemon Pearl: Super Music Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634662995/Pokemon/Diamond-Pearl/Cover_ddhg7n.png", artist: "Junichi Masuda/Go Ichinose", mediumId: 6},
+      { name: "Monster Hunter: World Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634664624/Monster%20Hunter/Monster%20Hunter%20World/Cover_sqkabe.png", artist: "Akihiko Narita, Yuko Komiyama", mediumId: 7},
     ], {});
   },
 

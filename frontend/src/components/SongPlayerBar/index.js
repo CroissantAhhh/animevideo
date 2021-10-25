@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useCurrentSongs } from "../../context/currentSongsContext";
 import AudioPlayer from "react-h5-audio-player";
 import "./SongPlayerBar.css";
@@ -5,6 +6,18 @@ import "./SongPlayerBar.css";
 
 function SongPlayerBar() {
     const { currentSongs, setCurrentSongs } = useCurrentSongs();
+    const [isShuffle, setIsShuffle] = useState(false);
+    const [isLoop, setIsLoop] = useState(false);
+    const [shuffleArray, setShuffleArray] = useState([]);
+
+    function toggleShuffle() {
+        const startingPosition = currentSongs?.currentPosition;
+        setIsShuffle(!isShuffle);
+    }
+
+    function toggleLoop() {
+        setIsLoop(!isLoop);
+    }
 
     function next() {
         if (currentSongs?.currentPosition === currentSongs?.songList?.length) {
@@ -38,7 +51,17 @@ function SongPlayerBar() {
                 onClickPrevious={previous}
                 onClickNext={next}
                 onEnded={next}
-                progressUpdateInterval={1}></AudioPlayer>
+                progressUpdateInterval={1}
+                customAdditionalControls={
+                    [
+                        <button className="loop-toggle" type="button" onClick={toggleLoop} style={isLoop ? {color: "rgb(1, 166, 196)"} : {color: "white"}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" focusable={false} width="1em" height="1em" viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet" style={{transform: "rotate(360deg)"}}><path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" fill="currentColor" /></svg>
+                        </button>,
+                        <button className="shuffle-toggle" type="button" onClick={toggleShuffle} style={isShuffle ? {color: "rgb(1, 166, 196)"} : {color: "white"}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" focusable={false} width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20" style={{transform: "rotate(360deg)"}}><path d="M15.093 6.694h.92v2.862L20 5.532l-3.988-4.025v2.387h-.92c-3.694 0-5.776 2.738-7.614 5.152c-1.652 2.172-3.08 4.049-5.386 4.049H0v2.799h2.093c3.694 0 5.776-2.736 7.614-5.152c1.652-2.173 3.08-4.048 5.386-4.048zM5.41 8.458c.158-.203.316-.412.477-.623a47.33 47.33 0 0 1 1.252-1.596C5.817 5.005 4.224 4.095 2.093 4.095H0v2.799h2.093c1.327 0 2.362.623 3.317 1.564zm10.602 4.836h-.92c-1.407 0-2.487-.701-3.491-1.738l-.303.397c-.441.58-.915 1.201-1.439 1.818c1.356 1.324 3 2.324 5.232 2.324h.92v2.398L20 14.468l-3.988-4.025v2.851z" fill="currentColor"/></svg>
+                        </button>
+                    ]
+                }></AudioPlayer>
                 <div className="song-player-bar-padding"></div>
             </div>
         </div>

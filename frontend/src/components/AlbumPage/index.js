@@ -15,14 +15,15 @@ function AlbumPage() {
     const { albumId } = useParams();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    },[]);
-
-    useEffect(() => {
         dispatch(loadTargetAlbum(albumId)).then(() => setAlbumFound(true));
     }, [dispatch, albumId]);
 
     const targetAlbum = useSelector(state => Object.values(state.albums))[0];
+
+    useEffect(() => {
+        document.title = targetAlbum?.name;
+        window.scrollTo(0, 0);
+    },[targetAlbum?.name]);
 
     useEffect(() => {
         dispatch(loadTracksByAlbum(albumId)).then(() => setTracksFound(true));

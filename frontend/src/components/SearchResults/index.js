@@ -10,6 +10,7 @@ function SearchResults() {
     const queryString = useSelector(state => state.search.search);
 
     useEffect(() => {
+        document.title = "Search Results For: " + queryString;
         window.scrollTo(0, 0)
     }, []);
 

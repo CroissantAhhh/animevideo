@@ -15,14 +15,15 @@ function MediaPage() {
     const { mediumId } = useParams();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, []);
-
-    useEffect(() => {
         dispatch(loadTargetMedia(mediumId)).then(() => setMediaLoaded(true));
     }, [dispatch, mediumId]);
 
     const targetMedia = useSelector(state => Object.values(state.media))[0];
+
+    useEffect(() => {
+        document.title = targetMedia?.name;
+        window.scrollTo(0, 0);
+    }, [targetMedia?.name]);
 
     useEffect(() => {
         dispatch(loadAlbumsByMedia(targetMedia?.id)).then(() => setAlbumsLoaded(true));

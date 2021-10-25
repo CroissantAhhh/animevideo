@@ -12,6 +12,7 @@ function TrackList() {
     const tracks = useSelector(state => Object.values(state.tracks));
 
     useEffect(() => {
+        document.title = "Home";
         window.scrollTo(0, 0);
     }, []);
 

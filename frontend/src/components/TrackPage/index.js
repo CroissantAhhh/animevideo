@@ -20,14 +20,15 @@ function TrackPage() {
     const { trackId } = useParams();
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, []);
-
-    useEffect(() => {
         dispatch(loadTrackById(trackId)).then(() => setTrackFound(true));
     }, [dispatch, trackId])
 
     const targetTrack = useSelector(state => Object.values(state.tracks))[0];
+
+    useEffect(() => {
+        document.title = targetTrack?.name;
+        window.scrollTo(0, 0);
+    }, [targetTrack.name]);
 
     useEffect(() => {
         dispatch(loadComments(trackId)).then(() => setCommentsFound(true));

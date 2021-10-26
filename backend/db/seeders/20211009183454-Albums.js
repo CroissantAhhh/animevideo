@@ -22,6 +22,8 @@ module.exports = {
       { name: "Pokemon Sword & Pokemon Shield: Super Music Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634663647/Pokemon/Sword-Shield/Cover_y525tr.png", artist: "Minako Adachi/Go Ichinose", mediumId: 6},
       { name: "Pokemon Diamond & Pokemon Pearl: Super Music Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634662995/Pokemon/Diamond-Pearl/Cover_ddhg7n.png", artist: "Junichi Masuda/Go Ichinose", mediumId: 6},
       { name: "Monster Hunter: World Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634664624/Monster%20Hunter/Monster%20Hunter%20World/Cover_sqkabe.png", artist: "Akihiko Narita, Yuko Komiyama", mediumId: 7},
+      { name: "Monster Hunter World: Iceborne Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634666012/Monster%20Hunter/Monster%20Hunter%20World%20-%20Iceborne/COVER_mpvmbk.jpg", artist: "Akihiko Narita, Yuko Komiyama", mediumId: 7},
+      { name: "Monster Hunter: Hunting Music Ultimate Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634664624/Monster%20Hunter/Monster%20Hunter%20World/Cover_sqkabe.png", artist: "Various Artists", mediumId: 7},
     ], {});
   },
 

@@ -37,16 +37,20 @@ function SongPlayerBar() {
             const currentSongPosition = currentSongs?.playOrder[currentSongs?.currentPosition];
             setCurrentSongs({ ...currentSongs, playOrder: currentSongs?.songList.map((element, index) => index), currentPosition: currentSongPosition})
         }
-        console.log(currentSongs?.playOrder, currentSongs?.currentPosition)
     }, [isShuffle])
 
     function toggleLoop() {
         setIsLoop(!isLoop);
+
     }
 
     function next() {
-        if (currentSongs?.currentPosition <= currentSongs?.songList?.length) {
-            setCurrentSongs({ ...currentSongs, currentPosition: currentSongs?.currentPosition + 1});
+        if (currentSongs?.currentPosition < currentSongs?.songList?.length) {
+            if (currentSongs?.currentPosition === currentSongs?.songList?.length - 1 && isLoop) {
+                setCurrentSongs({ ...currentSongs, currentPosition: 0 });
+            } else {
+                setCurrentSongs({ ...currentSongs, currentPosition: currentSongs?.currentPosition + 1});
+            }
         }
     }
 
@@ -68,7 +72,7 @@ function SongPlayerBar() {
                 </div>
                 <AudioPlayer
                 autoPlay
-                src={currentSongs?.currentPosition >= 0 && currentSongs?.currentPosition <= currentSongs?.songList?.length ? currentSongs?.songList[currentSongs?.playOrder[currentSongs?.currentPosition]]?.fileURL : "" }
+                src={currentSongs?.currentPosition >= 0 && currentSongs?.currentPosition < currentSongs?.songList?.length ? currentSongs?.songList[currentSongs?.playOrder[currentSongs?.currentPosition]]?.fileURL : "" }
                 showSkipControls={true}
                 onClickPrevious={previous}
                 onClickNext={next}

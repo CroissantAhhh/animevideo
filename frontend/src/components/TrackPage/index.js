@@ -15,7 +15,7 @@ function TrackPage() {
     const [commentBody, setCommentBody] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);
     const sessionUser = useSelector(state => state.session.user);
-    const { setCurrentSongs } = useCurrentSongs();
+    const { injectSongs } = useCurrentSongs();
     const dispatch = useDispatch();
     const { trackId } = useParams();
 
@@ -28,7 +28,7 @@ function TrackPage() {
     useEffect(() => {
         document.title = targetTrack?.name;
         window.scrollTo(0, 0);
-    }, [targetTrack.name]);
+    }, [targetTrack?.name]);
 
     useEffect(() => {
         dispatch(loadComments(trackId)).then(() => setCommentsFound(true));
@@ -78,7 +78,7 @@ function TrackPage() {
                             <Link to={`/albums/${targetTrack?.album?.id}`}>{targetTrack?.album?.name}</Link>
                         </div>
                         <img src={targetTrack?.trackImageURL} alt="track artwork" height="300px" width="300px"/>
-                        <button className="play-track" value={targetTrack?.fileURL} onClick={() => setCurrentSongs({ songList: [targetTrack], currentPosition: 0})
+                        <button className="play-track" value={targetTrack?.fileURL} onClick={() => injectSongs([targetTrack], 0)
                         }>Play</button>
                     </div>
                     <div className="comments-section">

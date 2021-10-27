@@ -20,6 +20,8 @@ function SongPlayerBar() {
     //     }
     // }, [isShuffle])
 
+    console.log(currentSongs);
+
     function toggleLoop() {
         setIsLoop(!isLoop);
     }

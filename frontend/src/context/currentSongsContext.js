@@ -37,10 +37,12 @@ export default function CurrentSongsProvider({ children }) {
                     isShuffle
                 });
             } else {
+                const normalOrder = tracks.map((element, index) => index);
+                const currentSongPosition = currentSongs?.playOrder[position];
                 setCurrentSongs({
                     songList: tracks,
-                    playOrder: tracks.map((element, index) => index),
-                    currentPosition: currentSongs.playOrder[position],
+                    playOrder: normalOrder,
+                    currentPosition: currentSongPosition,
                     isShuffle
                 });
             }

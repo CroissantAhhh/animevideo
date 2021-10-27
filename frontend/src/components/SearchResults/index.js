@@ -12,7 +12,7 @@ function SearchResults() {
     useEffect(() => {
         document.title = "Search Results For: " + queryString;
         window.scrollTo(0, 0)
-    }, []);
+    }, [queryString]);
 
     useEffect(() => {
         if (queryString) {

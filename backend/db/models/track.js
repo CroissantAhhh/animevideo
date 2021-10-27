@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     Track.belongsTo(models.Media, { as: "medium", foreignKey: 'mediumId' });
     Track.belongsTo(models.Album, { as: "album", foreignKey: 'albumId' });
     Track.hasMany(models.Comment, { as: "comments", foreignKey: 'trackId' });
+    Track.hasMany(models.PlaylistLink, { as: "playlistLinks", foreignKey: 'trackId'});
   };
   return Track;
 };

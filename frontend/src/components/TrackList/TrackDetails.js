@@ -10,7 +10,6 @@ const TrackDetails = ({ track }) => {
         let index = 0;
         for (let singleTrack of tracks) {
             if (track === singleTrack) {
-                console.log(index);
                 return index;
             };
             index++;

@@ -40,12 +40,12 @@ export default function CurrentSongsProvider({ children }) {
                 setCurrentSongs({
                     songList: tracks,
                     playOrder: tracks.map((element, index) => index),
-                    currentPosition: position,
+                    currentPosition: currentSongs.playOrder[position],
                     isShuffle
                 });
             }
         },
-        [setCurrentSongs]
+        [currentSongs, setCurrentSongs]
     );
 
     return (

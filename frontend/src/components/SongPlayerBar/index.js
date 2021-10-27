@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCurrentSongs } from "../../context/currentSongsContext";
 import AudioPlayer from "react-h5-audio-player";
 import "./SongPlayerBar.css";
@@ -22,7 +22,6 @@ function SongPlayerBar() {
 
     function toggleLoop() {
         setIsLoop(!isLoop);
-
     }
 
     function next() {

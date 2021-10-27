@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 
 const TrackDetails = ({ track }) => {
-    const { injectSongs } = useCurrentSongs();
+    const { currentSongs, injectSongs } = useCurrentSongs();
     const tracks = useSelector(state => Object.values(state.tracks));
 
     function findPosition() {
@@ -26,7 +26,7 @@ const TrackDetails = ({ track }) => {
             </div>
             <div className="track-section-art-play">
                 <img src={track.trackImageURL} alt="track artwork" height="160px" width="160px"/>
-                <button className="play-track"  onClick={() => injectSongs(tracks, findPosition())}
+                <button className="play-track"  onClick={() => injectSongs(tracks, findPosition(), currentSongs?.isShuffle)}
                 >Play</button>
             </div>
         </div>

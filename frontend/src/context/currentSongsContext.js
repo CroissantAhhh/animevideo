@@ -38,7 +38,13 @@ export default function CurrentSongsProvider({ children }) {
                 });
             } else {
                 const normalOrder = tracks.map((element, index) => index);
-                const currentSongPosition = currentSongs?.playOrder[position];
+                let currentSongPosition;
+                if (currentSongs?.playOrder.length) {
+                    currentSongPosition = currentSongs?.playOrder[position]
+                } else {
+                    currentSongPosition = position;
+                }
+
                 setCurrentSongs({
                     songList: tracks,
                     playOrder: normalOrder,

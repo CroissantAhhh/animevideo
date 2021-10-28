@@ -53,7 +53,7 @@ router.get(
 router.get(
     "/playlist/:playlistId",
     asyncHandler(async (req, res) => {
-        const playlistId = req.params.albumId;
+        const playlistId = req.params.playlistId;
         const tracks = await TracksRepository.listByPlaylist(playlistId);
         return res.json({
             tracks

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { retainSession } from "./store/session";
-import { loadUserPlaylists } from "./store/playlist";
 import Navigation from "./components/Navigation";
 import TrackList from "./components/TrackList";
 import SearchResults from "./components/SearchResults";

@@ -33,14 +33,17 @@ async function listByAlbum(albumId) {
 
 async function listByPlaylist(playlistId) {
     const playlist = await Playlist.findByPk(playlistId);
-    const playlistTrackIds = await PlaylistLink.findAll({
+    const playlistLinks = await PlaylistLink.findAll({
         where: {
             playlistId: playlist.id
         }
     })
-    console.log(playlistTrackIds);
+    const playlistTrackIds = playlistLinks.map(link => link.dataValues.trackId);
     return await Track.findAll({
         include: ["album", "medium"],
+        where: {
+            id: playlistTrackIds
+        }
     })
 }
 

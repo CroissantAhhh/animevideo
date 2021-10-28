@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { loadPlaylistById } from "../../store/playlist";
 import { loadTracksByPlaylist } from "../../store/tracks"
-import TracksSection from "../TrackList/"
+import TracksSection from "../AlbumPage/TracksSection";
+import "./PlaylistPage.css";
 
 function PlaylistPage() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -36,7 +37,16 @@ function PlaylistPage() {
     }, [playlistFound, tracksFound]);
 
     return (
-        <h1>Playlists</h1>
+        <div className="playlist-page-container">
+            {isLoaded &&
+                <div className="playlist-page">
+                    <div className="playlist-title">
+                        <h2>{targetPlaylist?.name}</h2>
+                    </div>
+                    <TracksSection tracks={tracks}></TracksSection>
+                </div>
+            }
+        </div>
     )
 }
 

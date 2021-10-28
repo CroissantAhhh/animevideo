@@ -6,10 +6,12 @@ import tracks from "./tracks";
 import albums from "./albums";
 import comments from "./comments";
 import search from "./search";
+import playlists from "./playlist";
 
 const rootReducer = combineReducers({
     media,
     albums,
+    playlists,
     tracks,
     comments,
     search,

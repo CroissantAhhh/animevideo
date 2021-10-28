@@ -1,4 +1,4 @@
-const { Track } = require("./models");
+const { Track, Playlist, PlaylistLink } = require("./models");
 const { Op } = require("sequelize");
 const { URLify } = require("../utils/helpers");
 
@@ -28,6 +28,19 @@ async function listByAlbum(albumId) {
         where: {
             albumId
         }
+    })
+}
+
+async function listByPlaylist(playlistId) {
+    const playlist = await Playlist.findByPk(playlistId);
+    const playlistTrackIds = await PlaylistLink.findAll({
+        where: {
+            playlistId: playlist.id
+        }
+    })
+    console.log(playlistTrackIds);
+    return await Track.findAll({
+        include: ["album", "medium"],
     })
 }
 
@@ -109,6 +122,7 @@ async function del(id) {
 module.exports = {
     list,
     listByAlbum,
+    listByPlaylist,
     shorterList,
     get,
     getTargetTrack,

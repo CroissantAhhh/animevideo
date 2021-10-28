@@ -51,6 +51,17 @@ router.get(
 );
 
 router.get(
+    "/playlist/:playlistId",
+    asyncHandler(async (req, res) => {
+        const playlistId = req.params.albumId;
+        const tracks = await TracksRepository.listByPlaylist(playlistId);
+        return res.json({
+            tracks
+        });
+    }),
+);
+
+router.get(
     "/search/:mediumName/:trackName",
     asyncHandler(async (req, res) => {
         const mediumName = req.params.mediumName;

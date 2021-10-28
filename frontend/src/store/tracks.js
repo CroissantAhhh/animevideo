@@ -55,6 +55,15 @@ export const loadTracksByAlbum = (albumId) => async dispatch => {
     };
 };
 
+export const loadTracksByPlaylist = (playlistId) => async dispatch => {
+    const response = await fetch(`/api/tracks/playlist/${playlistId}`);
+
+    if (response.ok) {
+        const tracks = await response.json();
+        dispatch(load(tracks["tracks"]));
+    };
+};
+
 
 export const loadTargetTrack = (mediumName, trackName) => async dispatch => {
     const response = await fetch(`/api/tracks/search/${mediumName}/${trackName}`);

@@ -4,11 +4,14 @@ const { URLify } = require("../utils/helpers");
 
 
 async function getOne(id) {
-    return await Playlist.findByPk(id);
+    return await Playlist.findByPk(id, {
+        include: ['playlistLinks']
+    });
 };
 
 async function getByUser(userId) {
     return await Playlist.findAll({
+        include: ['playlistLinks'],
         where: {
             userId
         }
@@ -17,6 +20,7 @@ async function getByUser(userId) {
 
 async function search(query) {
     return await Playlist.findAll({
+        include: ['playlistLinks'],
         where: {
             name: {
                 [Op.iLike]: `%${query}%`

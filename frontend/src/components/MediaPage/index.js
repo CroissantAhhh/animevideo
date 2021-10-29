@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { loadTargetMedia } from "../../store/media";
 import { loadAlbumsByMedia } from "../../store/albums";
 import AlbumsSection from "./AlbumsSection";
-import AlbumUploadModal from "../UploadModals/AlbumUploadModal";
 import "./MediaPage.css";
 
 function MediaPage() {
@@ -51,7 +50,6 @@ function MediaPage() {
                         </div>
                         <img className="media-banner" src={targetMedia?.bannerURL} height="400px" alt="media banner"/>
                     </div>
-                    <AlbumUploadModal className="upload-album-button" medium={targetMedia}></AlbumUploadModal>
                     <AlbumsSection albums={albums}></AlbumsSection>
                 </div>
             }

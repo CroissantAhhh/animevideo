@@ -5,6 +5,7 @@ header {
     height: 70px;
     background-color: rgb(36, 36, 36);
     border-bottom: 1px solid black;
+    z-index: 5;
 }
 
 .nav-bar-container {

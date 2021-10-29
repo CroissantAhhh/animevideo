@@ -10,7 +10,7 @@
     justify-content: flex-start;
 }
 
-h2 {
+.playlist-bar > h2 {
     color: white;
     font-size: 40px;
 }

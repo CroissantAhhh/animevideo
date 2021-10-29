@@ -4,7 +4,6 @@ import { useParams, Link } from "react-router-dom";
 import { loadTargetAlbum } from "../../store/albums";
 import { loadTracksByAlbum } from "../../store/tracks"
 import TracksSection from "./TracksSection";
-import TrackUploadModal from "../UploadModals/TrackUploadModal";
 import "./AlbumPage.css";
 
 function AlbumPage() {
@@ -49,7 +48,6 @@ function AlbumPage() {
                         </div>
                         <img className="album-image-details" src={targetAlbum?.albumImageURL} height="260px" width="260px" alt="album artwork" />
                     </div>
-                    <TrackUploadModal className="upload-track-button" album={targetAlbum}></TrackUploadModal>
                     <TracksSection tracks={tracks}></TracksSection>
                 </div>
             }

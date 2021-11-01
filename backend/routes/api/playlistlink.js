@@ -7,9 +7,10 @@ const router = express.Router();
 router.post(
     "/",
     asyncHandler(async (req, res) => {
-        const playlistLink = await PlaylistLinkRepository.create(req.body);
+        console.log(req.body)
+        const playlistId = await PlaylistLinkRepository.create(req.body);
         return res.json({
-            playlistLink
+            playlistId
         })
     })
 );

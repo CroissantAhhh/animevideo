@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = 'playlists/LOAD';
 const LOAD_OTHER = 'playlists/LOAD_OTHER';
+const ADD = 'playlists/ADD';
 
 const load = list => ({
     type: LOAD,
@@ -11,10 +12,15 @@ const load = list => ({
 const loadOther = list => ({
     type: LOAD_OTHER,
     list,
-})
+});
+
+const add = (playlist) => ({
+    type: ADD,
+    playlist
+});
 
 export const loadUserPlaylists = (userId) => async dispatch => {
-    const response = await fetch(`/api/playlists/byUser/${userId}`);
+    const response = await csrfFetch(`/api/playlists/byUser/${userId}`);
 
     if (response.ok) {
         const playlists = await response.json();
@@ -23,7 +29,7 @@ export const loadUserPlaylists = (userId) => async dispatch => {
 };
 
 export const loadPlaylistById = (playlistId) => async dispatch => {
-    const response = await fetch(`/api/playlists/byId/${playlistId}`);
+    const response = await csrfFetch(`/api/playlists/byId/${playlistId}`);
 
     if (response.ok) {
         const playlists = await response.json();
@@ -48,27 +54,49 @@ export const addPlaylist = (formData) => async dispatch => {
 };
 
 export const searchPlaylists = (query) => async dispatch => {
-    const response = await fetch(`/api/playlists/${query}`);
+    const response = await csrfFetch(`/api/playlists/${query}`);
     if (response.ok) {
         const playlists = await response.json();
         dispatch(load(playlists["playlists"]));
     };
 }
 
+export const addTrackToPlaylist = (playlistId, trackId) => async dispatch => {
+    await csrfFetch('/api/playlistLinks', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ playlistId, trackId })
+    });
+
+    const response = await csrfFetch(`/api/playlists/byId/${playlistId}`);
+
+    if (response.ok) {
+        const playlist = await response.json();
+        dispatch(add(playlist));
+    };
+};
+
 const playlistsReducer = (state = {user: {}, other: {}}, action) => {
+
     switch (action.type) {
         case LOAD:
             const playlists = {};
             for (let playlist of action.list) {
                 playlists[playlist.id] = playlist;
             };
-            return {...state, user: playlists};
+            return { ...state, user: playlists};
         case LOAD_OTHER:
             const otherPlaylists = {};
             for (let playlist of action.list) {
                 otherPlaylists[playlist.id] = playlist;
             };
             return {...state, other: otherPlaylists};
+        case ADD:
+            const updatedPlaylists = {...state.user};
+            updatedPlaylists[action.playlist.id] = action.playlist;
+            return { ...state, user: updatedPlaylists}
         default:
             return state;
     };

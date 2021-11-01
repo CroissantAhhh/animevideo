@@ -23,8 +23,8 @@ function PlaylistBar() {
                 <h2>Your Playlists</h2>
                 <button>Create New Playlist</button>
                 <div className="playlist-links">
-                    {userPlaylists.map(playlist => {
-                        return <Link to={`/playlists/${playlist.id}`} key={playlist.id}>{playlist.name}</Link>
+                    {userPlaylists?.map(playlist => {
+                        return <Link to={`/playlists/${playlist.id}`} key={String(playlist.id + playlist.name)}>{playlist.name}</Link>
                     })}
                 </div>
             </div>

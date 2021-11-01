@@ -10,7 +10,7 @@ const TrackDetails = ({ track }) => {
     const tracks = useSelector(state => Object.values(state.tracks));
     const sessionUser = useSelector(state => state.session.user);
     const yourSongsPlaylist = useSelector(state => Object.values(state.playlists.user))[0];
-    const [ songInYourSongs, setSongInYourSongs ] = useState(yourSongsContainsTrack());
+    const [ songInYourSongs, setSongInYourSongs ] = useState(sessionUser ? yourSongsContainsTrack() : false);
 
     function findPosition() {
         let index = 0;
@@ -32,16 +32,15 @@ const TrackDetails = ({ track }) => {
     }
 
     useEffect(() => {
-        setSongInYourSongs(yourSongsContainsTrack());
-    }, [setSongInYourSongs, yourSongsContainsTrack]);
+        if (sessionUser) {
+            setSongInYourSongs(yourSongsContainsTrack());
+        }
+    }, [setSongInYourSongs, sessionUser]);
 
     function addTrack(playlist) {
         dispatch(addTrackToPlaylist(playlist.id, track.id));
     };
 
-    useEffect(() => {
-
-    },[songInYourSongs])
 
 
     return (

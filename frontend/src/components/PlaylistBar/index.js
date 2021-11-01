@@ -13,7 +13,7 @@ function PlaylistBar() {
         if (sessionUser) {
             dispatch(loadUserPlaylists(sessionUser?.id))
         }
-    }, [dispatch, sessionUser?.id])
+    }, [dispatch, sessionUser?.id, sessionUser])
 
     const userPlaylists = useSelector(state => Object.values(state.playlists.user));
 

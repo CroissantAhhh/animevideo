@@ -76,8 +76,6 @@ const mhall = [
     { fileURL: "https://res.cloudinary.com/dmtj0amo0/video/upload/v1635285633/Monster%20Hunter/Hunting%20Music%20Ultimate%20Collection/MHX-Bloodbath-Diablos_oxemcr.mp3", name: "Bloodbath Diablos (MHX)", userId: 1, albumId: 21, mediumId: 7, trackImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1635287172/Monster%20Hunter/Hunting%20Music%20Ultimate%20Collection/mhxCover_u7gzbd.jpg"},
     { fileURL: "https://res.cloudinary.com/dmtj0amo0/video/upload/v1635285624/Monster%20Hunter/Hunting%20Music%20Ultimate%20Collection/MHX-Ahtal-Ka-1_rzwdar.mp3", name: "Ahtal-ka Phase 1 (MHX)", userId: 1, albumId: 21, mediumId: 7, trackImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1635287172/Monster%20Hunter/Hunting%20Music%20Ultimate%20Collection/mhxCover_u7gzbd.jpg"},
     { fileURL: "https://res.cloudinary.com/dmtj0amo0/video/upload/v1635285600/Monster%20Hunter/Hunting%20Music%20Ultimate%20Collection/MHX-Ahtal-Ka-2_yfn13c.mp3", name: "Ahtal-ka Phase 2 (MHX)", userId: 1, albumId: 21, mediumId: 7, trackImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1635287172/Monster%20Hunter/Hunting%20Music%20Ultimate%20Collection/mhxCover_u7gzbd.jpg"},
-
-
 ]
 
 module.exports = mhall;

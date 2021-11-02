@@ -20,6 +20,12 @@ const pokedp = require('../../utils/trackData/pokemonData/pokedp.js');
 const mhw = require('../../utils/trackData/MHData/mhw.js');
 const mhwice = require('../../utils/trackData/MHData/mhwice.js');
 const mhall = require('../../utils/trackData/MHData/mhall.js');
+const naruto1 = require('../../utils/trackData/narutoData/naruto1.js');
+const naruto2 = require('../../utils/trackData/narutoData/naruto2.js');
+const naruto3 = require('../../utils/trackData/narutoData/naruto3.js');
+const narutoS1 = require('../../utils/trackData/narutoData/narutoS1.js');
+const narutoS2 = require('../../utils/trackData/narutoData/narutoS2.js');
+const narutoS3 = require('../../utils/trackData/narutoData/narutoS3.js');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -45,7 +51,13 @@ module.exports = {
       ...pokedp,
       ...mhw,
       ...mhwice,
-      ...mhall
+      ...mhall,
+      ...naruto1,
+      ...naruto2,
+      ...naruto3,
+      ...narutoS1,
+      ...narutoS2,
+      ...narutoS3,
     ], {});
   },
 

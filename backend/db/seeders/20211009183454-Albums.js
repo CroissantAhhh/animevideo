@@ -24,6 +24,12 @@ module.exports = {
       { name: "Monster Hunter: World Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634664624/Monster%20Hunter/Monster%20Hunter%20World/Cover_sqkabe.png", artist: "Akihiko Narita, Yuko Komiyama", mediumId: 7},
       { name: "Monster Hunter World: Iceborne Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634666012/Monster%20Hunter/Monster%20Hunter%20World%20-%20Iceborne/COVER_mpvmbk.jpg", artist: "Akihiko Narita, Yuko Komiyama", mediumId: 7},
       { name: "Monster Hunter: Hunting Music Ultimate Collection", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1635285727/Monster%20Hunter/Hunting%20Music%20Ultimate%20Collection/Cover_q2a3ot.jpg", artist: "Various Artists", mediumId: 7},
+      { name: "Naruto Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658424/Naruto/Naruto%201/Cover_nrtxl6.jpg", artist: "Toshio Masuda", mediumId: 8},
+      { name: "Naruto Original Soundtrack II", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658748/Naruto/Naruto%202/Cover_qm9obd.jpg", artist: "Toshio Masuda", mediumId: 8},
+      { name: "Naruto Original Soundtrack III", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658937/Naruto/Naruto%203/Cover_gbni3k.jpg", artist: "Toshio Masuda", mediumId: 8},
+      { name: "Naruto Shippuden: Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634659892/Naruto/Naruto%20Shippuden%201/Cover_ntwyb4.jpg", artist: "Yasuharu Takanashi", mediumId: 8},
+      { name: "Naruto Shippuden: Original Soundtrack II", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634660161/Naruto/Naruto%20Shippuden%202/Cover_wl6fnj.jpg", artist: "Yasuharu Takanashi", mediumId: 8},
+      { name: "Naruto Shippuden: Original Soundtrack III", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634659892/Naruto/Naruto%20Shippuden%201/Cover_ntwyb4.jpg", artist: "Yasuharu Takanashi", mediumId: 8},
     ], {});
   },
 

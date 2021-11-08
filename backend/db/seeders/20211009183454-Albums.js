@@ -29,7 +29,7 @@ module.exports = {
       { name: "Naruto Original Soundtrack III", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634658937/Naruto/Naruto%203/Cover_gbni3k.jpg", artist: "Toshio Masuda", mediumId: 8},
       { name: "Naruto Shippuden: Original Soundtrack", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634659892/Naruto/Naruto%20Shippuden%201/Cover_ntwyb4.jpg", artist: "Yasuharu Takanashi", mediumId: 8},
       { name: "Naruto Shippuden: Original Soundtrack II", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634660161/Naruto/Naruto%20Shippuden%202/Cover_wl6fnj.jpg", artist: "Yasuharu Takanashi", mediumId: 8},
-      { name: "Naruto Shippuden: Original Soundtrack III", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634659892/Naruto/Naruto%20Shippuden%201/Cover_ntwyb4.jpg", artist: "Yasuharu Takanashi", mediumId: 8},
+      { name: "Naruto Shippuden: Original Soundtrack III", albumImageURL: "https://res.cloudinary.com/dmtj0amo0/image/upload/v1634660403/Naruto/Naruto%20Shippuden%203/Cover_k0qoum.jpg", artist: "Yasuharu Takanashi", mediumId: 8},
     ], {});
   },
 

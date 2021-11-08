@@ -9,9 +9,9 @@ const router = express.Router();
 router.get(
     "/byId/:playlistId",
     asyncHandler(async (req, res) => {
-        const playlists = await PlaylistRepository.getOne(req.params.playlistId);
+        const playlist = await PlaylistRepository.getOne(req.params.playlistId);
         return res.json({
-            playlists
+            playlist
         });
     }),
 );

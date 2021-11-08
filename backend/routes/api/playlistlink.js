@@ -16,11 +16,11 @@ router.post(
 );
 
 router.delete(
-    "/:id",
+    "/:playlistId/:trackId",
     asyncHandler(async (req, res) => {
-        const playlistLink = await PlaylistLinkRepository.delete(req.params.id);
+        await PlaylistLinkRepository.del(req.params.playlistId, req.params.trackId);
         return res.json({
-            playlistLink
+            playlistId: req.params.playlistId
         })
     })
 );

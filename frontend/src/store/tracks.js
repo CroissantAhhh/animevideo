@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 const LOAD = 'tracks/LOAD';
 const ADD_ONE = 'tracks/ADD_ONE'
+const REMOVE_ONE = 'tracks/REMOVE_ONE';
 
 const load = list => ({
     type: LOAD,
@@ -11,6 +12,11 @@ const addOne = track => ({
     type: ADD_ONE,
     track
 });
+
+const removeOne = trackId => ({
+    type: REMOVE_ONE,
+    trackId
+})
 
 export const loadTracks = () => async dispatch => {
     const response = await fetch('/api/tracks');
@@ -45,6 +51,10 @@ export const addTrack = (formData) => async dispatch => {
         return newTrack["track"];
     }
 };
+
+export const removeTrack = (trackId) => async dispatch => {
+    dispatch(removeOne(trackId));
+}
 
 export const loadTracksByAlbum = (albumId) => async dispatch => {
     const response = await fetch(`/api/tracks/album/${albumId}`);
@@ -101,6 +111,10 @@ const tracksReducer = (state = {}, action) => {
             return tracks;
         case ADD_ONE:
             return {...state, [action.track.id]: action.track}
+        case REMOVE_ONE:
+            const newTracks = {...state};
+            delete newTracks[action.trackId];
+            return newTracks;
         default:
             return state;
     };

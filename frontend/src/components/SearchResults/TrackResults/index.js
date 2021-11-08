@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchTracks } from "../../../store/tracks";
-import TrackResult from "./TrackResult";
+import TrackDetails from "../../TrackList/TrackDetails";
 
 function TrackResults({ query }) {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -30,7 +30,7 @@ function TrackResults({ query }) {
                     </div>
                     <div className="track-results-content">
                         {tracksArray.length > 0 && tracksArray.map(track => {
-                            return <TrackResult track={track} key={track.id}></TrackResult>
+                            return <TrackDetails track={track} key={track.id}></TrackDetails>
                         })}
                         {tracksArray.length === 0 &&
                             <h3>No results found.</h3>

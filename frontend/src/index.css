@@ -104,6 +104,7 @@ a:hover {
     justify-content: space-evenly;
     align-items: center;
     height: 160px;
+    position: relative;
 }
 
 .track-section-buttons > button {

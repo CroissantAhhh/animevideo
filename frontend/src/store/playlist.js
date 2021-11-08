@@ -32,8 +32,8 @@ export const loadPlaylistById = (playlistId) => async dispatch => {
     const response = await csrfFetch(`/api/playlists/byId/${playlistId}`);
 
     if (response.ok) {
-        const playlists = await response.json();
-        dispatch(loadOther([playlists["playlists"]]));
+        const playlist = await response.json();
+        dispatch(loadOther([playlist["playlist"]]));
     };
 };
 
@@ -74,7 +74,23 @@ export const addTrackToPlaylist = (playlistId, trackId) => async dispatch => {
 
     if (response.ok) {
         const playlist = await response.json();
-        dispatch(add(playlist));
+        dispatch(add(playlist.playlist));
+    };
+};
+
+export const removeTrackFromPlaylist = (playlistId, trackId) => async dispatch => {
+    await csrfFetch(`/api/playlistLinks/${playlistId}/${trackId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const response = await csrfFetch(`/api/playlists/byId/${playlistId}`);
+
+    if (response.ok) {
+        const playlist = await response.json();
+        dispatch(add(playlist.playlist));
     };
 };
 
@@ -95,8 +111,12 @@ const playlistsReducer = (state = {user: {}, other: {}}, action) => {
             return {...state, other: otherPlaylists};
         case ADD:
             const updatedPlaylists = {...state.user};
-            updatedPlaylists[action.playlist.id] = action.playlist;
-            return { ...state, user: updatedPlaylists}
+            for (let playlist in updatedPlaylists) {
+                if (updatedPlaylists[playlist].id === action.playlist.id) {
+                    updatedPlaylists[playlist] = action.playlist
+                }
+            };
+            return {...state, user: updatedPlaylists};
         default:
             return state;
     };

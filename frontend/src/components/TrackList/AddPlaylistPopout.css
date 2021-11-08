@@ -1,0 +1,15 @@
+.add-playlist-popout-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-playlist-popout-content > h2 {
+    color: white;
+    font-size: 30px;
+    margin: 30px;
+}
+
+.add-playlist-popout-content > button {
+    background-color:rgb(92, 92, 92);
+    border: none;
+}

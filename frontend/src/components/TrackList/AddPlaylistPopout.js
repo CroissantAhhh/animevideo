@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Modal } from '../../context/Modal';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTrackToPlaylist } from '../../store/playlist';
 import { PlaylistPopout } from "../../context/PlaylistPopout";
 import "./AddPlaylistPopout.css";
 
-function AddPlaylistPopout({ track, playlists }) {
+function AddPlaylistPopout({ track }) {
+    const dispatch = useDispatch();
     const [ showPopout, setShowPopout ] = useState(false);
     const [ popoutStyle, setPopoutStyle ] = useState({});
+    const [ snackBar, setSnackBar ] = useState({show: false, text: ""});
     const sessionUser = useSelector(state => state.session.user);
     const yourPlaylists = useSelector(state => Object.values(state.playlists.user));
 
@@ -39,6 +41,29 @@ function AddPlaylistPopout({ track, playlists }) {
         }
     };
 
+    function checkTrackPlaylist(playlistId) {
+        for (let yourPlaylist of yourPlaylists) {
+            if (yourPlaylist.id === playlistId) {
+                for (let playlistLink of yourPlaylist.playlistLinks) {
+                    if (playlistLink.trackId === track.id) {
+                        return true;
+                    };
+                };
+            };
+        };
+        return false;
+    };
+
+    function addToPlaylist(playlistId) {
+        if (!checkTrackPlaylist(playlistId)) {
+            // dispatch(addTrackToPlaylist(playlistId, track.id))
+            setSnackBar({show: true, text: "Added to playlist"})
+        } else {
+            setSnackBar({show: true, text: "Track already in playlist"})
+        }
+        setTimeout(() => setSnackBar({show: false, text: ""}), 3000);
+    }
+
     return (
         <>
             <button className="add-track-playlist" onClick={openMenu} style={{display: `${sessionUser ? "block" : "none" }`}}>
@@ -50,11 +75,16 @@ function AddPlaylistPopout({ track, playlists }) {
                         <div className="add-playlist-popout-content">
                             <h2>Add To Playlist</h2>
                             {yourPlaylists.map((yourPlaylist) => {
-                                return <button key={yourPlaylist.id}>{yourPlaylist.name}</button>
+                                return <button onClick={() => addToPlaylist(yourPlaylist.id)} key={yourPlaylist.id}>{yourPlaylist.name}</button>
                             })}
                         </div>
                     </div>
                 </PlaylistPopout>
+            )}
+            {snackBar.show && (
+                <div className="add-track-playlist-snackbar">
+                    {snackBar.text}
+                </div>
             )}
         </>
     );
